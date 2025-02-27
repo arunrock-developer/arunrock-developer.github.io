@@ -1,0 +1,52 @@
+.main {
+    background-color: var(--background-color);
+}
+
+.subtitle,
+.description {
+    color: var(--text-gray);
+}
+
+.highlight-text {
+    color: var(--secondary-color);
+}
+
+
+
+
+// hero
+
+
+.introduction {
+    h1 {
+        font-size: 4em;
+        color: white;
+    }
+}
+
+
+.element {
+    width: 0;
+    text-wrap: nowrap;
+    overflow: hidden !important;
+    animation: typing 3s steps(30) infinite alternate;
+}
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 55%;
+    }
+}
+
+
+.typed-cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0%;
+    }
+}
