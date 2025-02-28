@@ -2,10 +2,176 @@
 
 
 
-:root{
+:root {
     --section-color: #10101A;
     --secondary-color: #FF4904;
     --background-color: #0B0B13;
     --text-gray: #b9bdcc;
     --text-dark-gray: #6E7281;
+}
+
+.text-gray{
+    color: var(--text-gray);
+}
+.text-dark-gray{
+    color: var(--text-dark-gray);
+}
+
+.default-section {
+    background-color: var(--background-color);
+}
+.custom-section {
+    background-color: var(--section-color);
+}
+
+
+
+
+.section-title {
+    font-size: 4em;
+    color: white;
+}
+
+.intro-text {
+    color: var(--text-gray);
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2em;
+    }
+}
+
+
+
+
+
+
+// animation-line
+
+
+
+
+@media (min-width:768px) {
+    .animation-container {
+
+        position: relative;
+        left: 40%;
+
+        width: 20%;
+
+    }
+}
+
+
+.animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    gap: 5px;
+    /* Adds spacing between elements */
+}
+
+.animated-line,
+.static-line {
+    height: 2.5px;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 10px;
+}
+
+.static-line {
+    width: 10%;
+}
+
+.expanding-line {
+    width: 10%;
+    animation: expand 3s ease-in-out infinite alternate;
+}
+
+.shrinking-line {
+    width: 30%;
+    animation: shrink 3s ease-in-out infinite alternate;
+}
+
+@keyframes expand {
+    from {
+        width: 10%;
+    }
+
+    to {
+        width: 30%;
+    }
+}
+
+@keyframes shrink {
+    from {
+        width: 30%;
+    }
+
+    to {
+        width: 10%;
+    }
+}
+
+
+
+
+
+// resume-card
+.box {
+    width: 15px;
+    height: 15px;
+    padding: 0px 5px;
+    border: 3px solid red;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+
+.vertical {
+    width: 2px;  /* Thin vertical line */
+    height: 220px; /* Adjust height as needed */
+    background-color: red; /* Line color */
+    position: relative;
+    left: 6px;
+    bottom: 5px;
+}
+
+
+
+
+
+
+
+// skills
+
+.tool-tip {
+    width: 60px !important;
+    height: 30px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkblue;
+    color: white;
+    border-radius: 4px;
+    position: relative;
+    bottom: 43px;
+    z-index: 10;
+}
+
+/* Arrow at the bottom */
+.tool-tip::after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: darkblue;
 }

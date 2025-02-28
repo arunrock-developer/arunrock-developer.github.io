@@ -3,58 +3,711 @@
 <div class="row mt-5"></div>
 <div class="row mt-4"></div>
 
-<section class="main">
+<section class="custom-section">
+  <section class="hero min-vh-50">
+    <div class="container py-5">
+      <div class="row py-5">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+          <div class="left-side">
+            <img class="img-fluid" src="../../../assets/img/optimise-me.png" alt="Personal Image" />
+          </div>
+        </div>
+        <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 mt-5">
+          <div class="right-side">
+            <div class="introduction">
+              <span class="subtitle mb-md-5 fw-bold">INTRODUCTION</span>
+              <h1 class="title mt-lg-5">
+                Hi, I'm <span class="highlight-text">ArunKumar</span><br />
+              </h1>
+              <h1 class="title mt-2 d-flex align-items-end gap-3">
+                <span class="a highlight-text">A</span>
+                <span class="element">{{ currentWord }}</span>
+              </h1>
+              <p class="mt-2 description fw-bold">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+                eligendi laboriosam culpa, optio possimus quo necessitatibus
+                voluptas, quidem ullam alias maiores.
+              </p>
+            </div>
+
+            <div class="d-lg-flex mt-lg-5 align-items-center gap-3">
+              <button type="button" class="btn-about rounded-1">
+                About me
+              </button>
+              <ul class="list-unstyled d-flex gap-2 m-0">
+                <li>
+                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-pinterest"></i></a>
+                </li>
+                <li>
+                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-twitter-x"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
 
 
-    <section class="hero min-vh-50">
-        <div class="container py-5">
-            <div class="row py-5">
-              <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 py-lg-5">
-                <div class="left-side">
-                  <img class="img-fluid" src="../../../assets/img/logo.png" alt="Personal Image">
+
+
+<!-- about -->
+<section class="default-section py-5">
+  <!-- title -->
+  <div class="container text-center">
+    <span class="intro-text">My Intro</span>
+    <h2 class="section-title">About <span class="highlight-text">Me</span></h2>
+    <div class="animation-container mt-3">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+  </div>
+
+  <!-- content-body -->
+  <div class="container mt-5">
+    <div class="row">
+
+      <div class="col-lg-6">
+        <!-- content-left -->
+        <div class="content-left">
+          <img class="img-fluid about-img" src="../../../assets/img/me.jpg" alt="Personal Image" />
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <h3 class="text-gray text-left">PERSONAL INFOS:</h3>
+        <div class="row mt-4 px-2">
+          <div class="col">
+            <div class="row mb-3" *ngFor="let value of aboutText">
+              <div class="d-lg-flex justify-content-between align-items-center">
+                <div class="col-md-12 col-lg-auto">
+                  <h5 class="text-dark-gray fw-bold mb-0">{{ value.option }}</h5>
                 </div>
-              </div>
-              <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
-                <div class="right-side">
-                  <div class="introduction">
-                    <span class="subtitle">INTRODUCTION</span>
-                    <h1 class="title mt-5">
-                      Hi, I'm <span class="john highlight-text">ArunKumar</span><br>
-                    </h1>
-                    <h1 class="title mt-2  d-flex align-items-end gap-3">
-                        <span class="a highlight-text">A </span><span class="element">{{currentWord}}</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true">|</span>
-                      </h1>
-                    <p class="mt-2 description fw-bold">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                      eligendi laboriosam culpa, optio possimus quo necessitatibus
-                      voluptas, quidem ullam alias maiores
-                    </p>
-                  </div>
-
-                  <div class="d-flex mt-5 align-items-center gap-3">
-                    <button type="button" class="btn btn-danger rounded-1 py-2 px-4">About me</button>
-                    <ul class="list-unstyled d-flex gap-2 m-0">
-                        <li>
-                            <a href="#" class="text-white px-1 fs-4"><i class="bi bi-facebook"></i></a>
-                          </li>
-                      <li>
-                        <a href="#" class="text-white px-1 fs-4"><i class="bi bi-instagram"></i></a>
-                      </li>
-                      <li>
-                        <a href="#" class="text-white px-1 fs-4"><i class="bi bi-pinterest"></i></a>
-                      </li>
-                      <li>
-                        <a href="#" class="text-white px-1 fs-4"><i class="bi bi-twitter-x"></i></a>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  
+                <div class="col-md-12 col-lg-6 text-break text-wrap">
+                  <h5 class="text-gray fw-bold mb-0">{{ value.answer }}</h5>
                 </div>
               </div>
             </div>
+            <button type="button" class="btn btn-primary btn-about rounded-1 mt-3">
+              Hire me
+            </button>
           </div>
-    </section>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- resume -->
+<section class="default-section py-5">
+  <!-- title -->
+  <div class="container text-center">
+    <span class="intro-text">Check Out Of My Resume</span>
+    <h2 class="section-title">My <span class="highlight-text">Resume</span></h2>
+    <div class="animation-container mt-3">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+  </div>
+
+  <!-- content-body -->
+  <div class="container mt-5">
+    <div class="row text-center">
+      <div class="col-lg-6">
+        <h2 class="text-white">Education</h2>
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-lg-6">
+        <h2 class="text-white">Experience</h2>
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row  mt-4">
+          <div class="col-auto">
+            <span class="box m-0 p-0"></span>
+            <div class="vertical m-0 p-0"></div>
+          </div>
+          <div class="col m-0 p-0">
+            <div class="card  text-center">
+              <h4 class="text-white fw-bold">bsc of software systems</h4>
+              <h6 class="text-white fw-bold mt-4">bsc of software systems</h6>
+              <p class="text-white fw-bold mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+                maiores iusto odio repellendus sed obcaecati ut itaque quas beatae optio?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+
+
+<!-- Skills -->
+
+<section class="custom-section py-5 skill">
+
+
+  <!-- title -->
+  <div class="container text-center">
+    <span class="intro-text">My Level Of Knowledge In Some Tools</span>
+    <h2 class="section-title">My <span class="highlight-text">Skills</span></h2>
+    <div class="animation-container mt-3">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+  </div>
+
+  <!-- content-body -->
+  <div class="container mt-5">
+    <div class="row">
+
+
+
+      <div class="col-lg-6">
+        <h2 class="text-white">Design Skill</h2>
+
+        <div class="row  px-lg-2 mt-4">
+
+          <div class="card">
+
+            <div class="">
+              <h6 class="text-white">Photoshop</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 90%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(90% - 33px)'}">
+                90%
+              </div>             
+              
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">Figma</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 75%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(75% - 33px)'}">
+                75%
+              </div>     
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">Design</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 85%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(85% - 33px)'}">
+                85%
+              </div>    
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-lg-6">
+        <h2 class="text-white">code Skill</h2>
+
+        <div class="row  px-lg-2 mt-4">
+
+          <div class="card">
+
+            <div class="">
+              <h6 class="text-white">Html</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 90%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(90% - 33px)'}">
+                90%
+              </div>             
+              
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">Css</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 75%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(75% - 33px)'}">
+                75%
+              </div>     
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">bootstrap</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 85%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(85% - 33px)'}">
+                85%
+              </div>    
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">sass</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 80%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(80% - 33px)'}">
+                80%
+              </div>    
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">Typescript</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 70%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(70% - 33px)'}">
+                70%
+              </div>    
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">Flutter</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 75%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(75% - 33px)'}">
+                75%
+              </div>    
+            </div>
+
+
+
+            <div class="">
+              <h6 class="text-white">dart</h6>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" style="width: 60%;" aria-valuemin="20"
+                  aria-valuemax="100" id="progressTooltip"></div>
+              </div>
+              <div class="tool-tip" [ngStyle]="{'left': 'calc(60% - 33px)'}">
+                60%
+              </div>    
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+
+<!-- services -->
+
+<section class="default-section py-5 service">
+   <!-- title -->
+   <div class="container text-center">
+    <span class="intro-text">Services I Offer To My Clients</span>
+    <h2 class="section-title">My <span class="highlight-text">Services</span></h2>
+    <div class="animation-container mt-3">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+  </div>
+
+
+  <div class="container mt-5">
+    <div class="row">
+
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center py-3">
+            <i class="bi bi-building fw-bold fs-1"></i>
+            <h4 class="mt-3 mb-2 text-white">Web Design</h4>
+            <p class="text-dark-gray mt-4 px-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Sunt nostrum facere modi quas excepturi, libero cumque, 
+              dolorem recusandae accusantium
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center py-3">
+            <i class="bi bi-image fw-bold fs-1"></i>
+            <h4 class="mt-3 mb-2 text-white">Graphics Design</h4>
+            <p class="text-dark-gray mt-4 px-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Sunt nostrum facere modi quas excepturi, libero cumque, 
+              dolorem recusandae accusantium
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center py-3">
+            <i class="bi bi-code fw-bold fs-1"></i>
+            <h4 class="mt-3 mb-2 text-white">Web Development</h4>
+            <p class="text-dark-gray mt-4 px-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Sunt nostrum facere modi quas excepturi, libero cumque, 
+              dolorem recusandae accusantium
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center py-3">
+            <i class="bi bi-google-play fw-bold fs-1"></i>
+            <h4 class="mt-3 mb-2 text-white">APP Development</h4>
+            <p class="text-dark-gray mt-4 px-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Sunt nostrum facere modi quas excepturi, libero cumque, 
+              dolorem recusandae accusantium
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center py-3">
+            <i class="bi bi-camera fw-bold fs-1"></i>
+            <h4 class="mt-3 mb-2 text-white">Photography</h4>
+            <p class="text-dark-gray mt-4 px-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Sunt nostrum facere modi quas excepturi, libero cumque, 
+              dolorem recusandae accusantium
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center py-3">
+            <i class="bi bi-megaphone fw-bold fs-1"></i>
+            <h4 class="mt-3 mb-2 text-white">Digital Marketing</h4>
+            <p class="text-dark-gray mt-4 px-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Sunt nostrum facere modi quas excepturi, libero cumque, 
+              dolorem recusandae accusantium
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+<!-- testimonial -->
+
+
+<section class="custom-section py-5 testimonial">
+
+
+  <!-- title -->
+  <div class="container text-center">
+    <span class="intro-text">What Clients Say</span>
+    <h2 class="section-title">My <span class="highlight-text">Testimonial</span></h2>
+    <div class="animation-container mt-3">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+  </div>
+
+  <!-- content-body -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center">
+            <div>
+              <img src="../../../assets/img/logo.png" width="100" height="100" alt="">
+            </div>
+            <p class="px-2 text-dark-gray">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+               Dolore esse molestias, molestiae consequatur hic inventore error 
+               magni magnam ea reiciendis mollitia repellat vero.
+            </p>
+            <p>
+              <i class="bi bi-star-fill px-1" *ngFor="let a of [1,1,1,1]"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center">
+            <div>
+              <img src="../../../assets/img/logo.png" width="100" height="100" alt="">
+            </div>
+            <p class="px-2 text-dark-gray">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+               Dolore esse molestias, molestiae consequatur hic inventore error 
+               magni magnam ea reiciendis mollitia repellat vero.
+            </p>
+            <p>
+              <i class="bi bi-star-fill px-1" *ngFor="let a of [1,1,1,1]"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center">
+            <div>
+              <img src="../../../assets/img/logo.png" width="100" height="100" alt="">
+            </div>
+            <p class="px-2 text-dark-gray">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+               Dolore esse molestias, molestiae consequatur hic inventore error 
+               magni magnam ea reiciendis mollitia repellat vero.
+            </p>
+            <p>
+              <i class="bi bi-star-fill px-1" *ngFor="let a of [1,1,1,1]"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+<!-- WorkingStatistics -->
+
+
+<section class="custom-section py-5 Working">
+
+
+  <!-- title -->
+  <div class="container text-center">
+    <span class="intro-text">This Are My Strongest Sides</span>
+    <h2 class="section-title">Working <span class="highlight-text">Statistics</span></h2>
+    <div class="animation-container mt-3">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+  </div>
+
+  <!-- content-body -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="text-center">
+            <div>
+              <img src="../../../assets/img/logo.png" width="100" height="100" alt="">
+            </div>
+            <p class="px-2 text-dark-gray">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+               Dolore esse molestias, molestiae consequatur hic inventore error 
+               magni magnam ea reiciendis mollitia repellat vero.
+            </p>
+            <p>
+              <i class="bi bi-star-fill px-1" *ngFor="let a of [1,1,1,1]"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 
 </section>
