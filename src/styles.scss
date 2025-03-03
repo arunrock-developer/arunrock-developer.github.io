@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-
+html {
+    scroll-behavior: smooth;
+  }
+  
 :root {
     --section-color: #10101A;
     --secondary-color: #FF4904;
     --background-color: #0B0B13;
     --text-gray: #b9bdcc;
     --text-dark-gray: #6E7281;
+}
+
+.text-secondary{
+    color: var(--secondary-color);
 }
 
 .text-gray{
@@ -175,3 +182,37 @@
     border: 8px solid transparent;
     border-top-color: darkblue;
 }
+
+
+
+
+
+
+
+
+// animation button
+
+
+  .animated-button-active {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--secondary-color);
+    color: white !important;
+    border-radius: 5px;
+    transition: all 0.5s ease-in;
+  }
+
+  .animated-button {
+    padding: 10px 15px;
+    border: 1px solid var(--secondary-color);
+    background-color: transparent !important;
+    color: white !important;
+    border-radius: 5px;
+    transition: all 0.5s ease-in;
+  }
+
+
+  .animated-button:hover {
+    background-color: var(--secondary-color) !important;
+  }
+

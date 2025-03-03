@@ -14,24 +14,25 @@
     <!-- Navigation Links -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarText">
       <ul class="navbar-nav gap-3">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+        <li class="nav-item" *ngFor="let items of navLink">
+          <a class="nav-link" (click)="changeActive(items.active)" [style]="{'color': active == items.active ? '#FF4904': ''}" [routerLink]="'/'" [fragment]="items.link">{{ items.name }}</a>
+        </li>
+        
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="" routerLink="/home" fragment="about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="" routerLink="/home" fragment="service">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
+          <a class="nav-link" href="" routerLink="/home" fragment="portfolio">Portfolio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Portfolio</a>
+          <a class="nav-link" href="" routerLink="/home" fragment="contact">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
+          <a class="nav-link" href="" routerLink="/home" fragment="contact">Contact</a>
+        </li> -->
       </ul>
     </div>
   </div>
