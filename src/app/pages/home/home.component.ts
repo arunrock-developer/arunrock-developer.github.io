@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateTime } from 'luxon';
+import emailjs from 'emailjs-com';
 
 
 
@@ -163,7 +164,7 @@ export class HomeComponent implements OnInit {
 
   personalForm = new UntypedFormGroup({
     name: new UntypedFormControl('', Validators.required),
-    email: new UntypedFormControl('', Validators.required),
+    email: new UntypedFormControl('', [Validators.required,Validators.email]),
     message: new UntypedFormControl('', Validators.required),
   });
 
@@ -197,9 +198,36 @@ export class HomeComponent implements OnInit {
 
     if(!hasError){
       console.log("form",this.personalForm.value);
-    }
+      console.log("Form is valid. Sending email...");
+      const formContent = this.personalForm.value;
+      this.sendEmail(formContent);
+    }else {
+      console.log("Form is invalid. Please check the inputs.");
+  }
 
   }
+
+
+  sendEmail(formContent: any) {
+    console.log('Sending email with the following content:', {
+        to_name: 'Arun Kumar',
+        from_name: formContent.name,
+        from_email: formContent.email,
+        message: formContent.message,
+    });
+
+    emailjs.send('service_tn5cphf', 'template_k69sizp', {
+        to_name: 'Arun Kumar',
+        from_name: formContent.name,
+        from_email: formContent.email,
+        message: formContent.message, // Ensure 'message' matches the key in your template
+    }, 'McvVrNswgF5atRBbJ')
+    .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+    }, (error) => {
+        console.log('Failed to send email.', error);
+    });
+}
 
 
 
