@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +8,11 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   active:number = 0;
+
+  darkTheme:boolean = true;
+
+   @Output() themeChanged = new EventEmitter<boolean>();
+
 
   constructor() { }
 
@@ -31,5 +36,11 @@ export class NavbarComponent implements OnInit {
     {'name':'Portfolio', 'link':'Working', 'active':3},
     {'name':'Contact', 'link':'contact', 'active':4} 
   ]
+
+
+  themeChange() {
+    this.darkTheme = !this.darkTheme
+    this.themeChanged.emit(this.darkTheme); // Emit new value
+  }
 
 }

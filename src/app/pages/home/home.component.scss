@@ -80,6 +80,38 @@
 
 
 
+.bi-instagram {
+    background: linear-gradient(45deg, #fccc63, #e4405f, #bc2a8d, #5851db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.bi-instagram:hover {
+    background: linear-gradient(45deg, #fccc63, #e4405f, #bc2a8d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.bi-facebook{
+    background: #006aff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bi-linkedin{
+    background: #80b3fa;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+
+
 
 
 
@@ -245,3 +277,9 @@
     overflow: hidden;
     object-fit: contain;
 }
+
+
+
+
+
+

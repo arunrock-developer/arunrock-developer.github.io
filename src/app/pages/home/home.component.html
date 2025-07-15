@@ -1,12 +1,21 @@
-<app-navbar></app-navbar>
+<app-navbar (themeChanged)="onThemeChanged($event)"></app-navbar>
 
 <div class="row mt-5"></div>
 <div class="row mt-4"></div>
 
-<section class="custom-section" id="hero">
+<div [ngClass]="darkTheme ? 'darkTheme' : 'lightTheme' ">
+
+
+
+
+
+
+
+
+<section class="custom-section"  id="hero">
   <section class="hero min-vh-50">
-    <div class="container py-5">
-      <div class="row py-5">
+    <div class="container py-lg-5">
+      <div class="row py-lg-5">
         <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6">
           <div class="left-side">
             <img class="img-fluid" src="../../../assets/img/optimise-me.png" alt="Personal Image" />
@@ -15,15 +24,15 @@
         <div class="col-xl-7 col-lg-7 col-md-6 col-sm-6 mt-5">
           <div class="right-side">
             <div class="introduction">
-              <span class="subtitle mb-md-5 fw-bold">INTRODUCTION</span>
-              <h1 class="title mt-lg-5">
-                Hi, I'm <span class="highlight-text">ArunKumar</span><br />
+              <span class="subtitle mb-md-5 fw-bold indie-flower-regular"  [ngClass]="darkTheme ? '' : 'text-dark'">INTRODUCTION</span>
+              <h1 class="title mt-lg-5 abril-fatface-regular" [ngClass]="darkTheme ? '' : 'text-dark'">
+                Hi, I'm <span class="highlight-text ">ArunKumar</span><br />
               </h1>
-              <h1 class="title mt-2 d-flex align-items-end gap-3">
+              <h1 class="title mt-2 d-flex align-items-end gap-3 abril-fatface-regular">
                 <span class="a highlight-text">A</span>
-                <span class="element">{{ currentWord }}</span>
+                <span class="element"  [ngClass]="darkTheme ? '' : 'text-dark'">{{ currentWord }}</span>
               </h1>
-              <p class="mt-2 description fw-bold">
+              <p class="mt-2 description fw-bold ga-maamli-regular"  [ngClass]="darkTheme ? '' : 'text-dark'">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
                 eligendi laboriosam culpa, optio possimus quo necessitatibus
                 voluptas, quidem ullam alias maiores.
@@ -36,16 +45,13 @@
               </button>
               <ul class="list-unstyled d-flex gap-2 m-0">
                 <li>
-                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=100030711361794" target="_blank" class="text-white px-1 fs-4"><i class="bi bi-facebook"></i></a>
                 </li>
                 <li>
-                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.instagram.com/a_r_u_n__r_o_c_k/" target="_blank" class="text-white px-1 fs-4"><i class="bi bi-instagram"></i></a>
                 </li>
                 <li>
-                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-pinterest"></i></a>
-                </li>
-                <li>
-                  <a href="#" class="text-white px-1 fs-4"><i class="bi bi-twitter-x"></i></a>
+                  <a href="https://www.linkedin.com/in/arun-kumar-38915a260/" target="_blank" class="text-white px-1 fs-4"><i class="bi bi-linkedin"></i></a>
                 </li>
               </ul>
             </div>
@@ -59,12 +65,15 @@
 
 
 
+
+
+
 <!-- about -->
 <section class="default-section py-5" id="about">
   <!-- title -->
-  <div class="container text-center">
-    <span class="intro-text">My Intro</span>
-    <h2 class="section-title">About <span class="highlight-text">Me</span></h2>
+  <div class="container text-center appear-animation">
+    <span class="intro-text indie-flower-regular">My Intro</span>
+    <h2 class="section-title abril-fatface-regular">About <span class="highlight-text">Me</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -73,7 +82,7 @@
   </div>
 
   <!-- content-body -->
-  <div class="container mt-5">
+  <div class="container mt-lg-5 appear-animation">
     <div class="row">
 
       <div class="col-lg-6">
@@ -84,7 +93,7 @@
       </div>
 
       <div class="col-lg-6">
-        <h3 class="text-gray text-left">PERSONAL INFOS:</h3>
+        <h3 class="text-gray text-left ">PERSONAL INFOS:</h3>
         <div class="row mt-4 px-2">
           <div class="col">
             <div class="row mb-3" *ngFor="let value of aboutText">
@@ -124,9 +133,9 @@
 <!-- resume -->
 <section class="default-section py-5"  id="service">
   <!-- title -->
-  <div class="container text-center">
-    <span class="intro-text">Check Out Of My Resume</span>
-    <h2 class="section-title">My <span class="highlight-text">Resume</span></h2>
+  <div class="container text-center appear-animation">
+    <span class="intro-text indie-flower-regular">Check Out Of My Resume</span>
+    <h2 class="section-title abril-fatface-regular">My <span class="highlight-text">Resume</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -135,7 +144,7 @@
   </div>
 
   <!-- content-body -->
-  <div class="container mt-5">
+  <div class="container mt-5 appear-animation">
     <div class="row text-center">
       <div class="col-lg-6">
         <h2 class="text-white">Education</h2>
@@ -203,9 +212,9 @@
 
 
   <!-- title -->
-  <div class="container text-center">
-    <span class="intro-text">My Level Of Knowledge In Some Tools</span>
-    <h2 class="section-title">My <span class="highlight-text">Skills</span></h2>
+  <div class="container text-center appear-animation">
+    <span class="intro-text indie-flower-regular">My Level Of Knowledge In Some Tools</span>
+    <h2 class="section-title abril-fatface-regular">My <span class="highlight-text">Skills</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -214,7 +223,7 @@
   </div>
 
   <!-- content-body -->
-  <div class="container mt-5">
+  <div class="container mt-5 appear-animation">
     <div class="row">
 
 
@@ -401,9 +410,9 @@
 
 <section class="default-section py-5 service">
    <!-- title -->
-   <div class="container text-center">
-    <span class="intro-text">Services I Offer To My Clients</span>
-    <h2 class="section-title">My <span class="highlight-text">Services</span></h2>
+   <div class="container text-center  appear-animation">
+    <span class="intro-text indie-flower-regular">Services I Offer To My Clients</span>
+    <h2 class="section-title abril-fatface-regular">My <span class="highlight-text">Services</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -412,8 +421,8 @@
   </div>
 
 
-  <div class="container mt-5">
-    <div class="row">
+  <div class="container mt-5  appear-animation">
+    <div class="row">      
       
       <div class="col-lg-4 col-md-6">
         <div class="card">
@@ -505,8 +514,8 @@
 
   <!-- title -->
   <div class="container text-center">
-    <span class="intro-text">What Clients Say</span>
-    <h2 class="section-title">My <span class="highlight-text">Testimonial</span></h2>
+    <span class="intro-text indie-flower-regular">What Clients Say</span>
+    <h2 class="section-title abril-fatface-regular">My <span class="highlight-text">Testimonial</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -517,6 +526,38 @@
   <!-- content-body -->
   <div class="container mt-5">
     <div class="row">
+      
+
+      <div class="carousel-container">
+        <!-- Slick Carousel -->
+        <ngx-slick-carousel #slickModal="slick-carousel" class="carousel" [config]="slideConfig">
+          
+          <div ngxSlickItem class="slide" *ngFor="let item of [1, 1, 1,1]">
+            <div class="row mx-2">
+              <div class="card">
+                <div class="text-center">
+                  <div class="d-flex justify-content-center">
+                    <!-- <img src="../../../assets/img/logo.png" width="100" height="100" class="mx-auto d-block" alt=""> -->
+                     <h4 class="text-white"> Web & App UI/UX Design </h4>
+                  </div>
+                  <p class="px-2 text-dark-gray">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore esse molestias, molestiae consequatur hic inventore error magni magnam ea reiciendis mollitia repellat vero.
+                  </p>
+                  <p>
+                    <i class="bi bi-star-fill px-1" *ngFor="let a of [1,1,1,1]"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </ngx-slick-carousel>
+      </div>
+      
+      
+
+
+<!-- 
       <div class="col-lg-4  col-md-6">
         <div class="card">
           <div class="text-center">
@@ -534,6 +575,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-lg-4  col-md-6">
         <div class="card">
           <div class="text-center">
@@ -551,6 +593,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-lg-4  col-md-6">
         <div class="card">
           <div class="text-center">
@@ -567,7 +610,8 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> -->
+
     </div>
   </div>
 
@@ -584,9 +628,9 @@
 
 
   <!-- title -->
-  <div class="container text-center">
-    <span class="intro-text">This Are My Strongest Sides</span>
-    <h2 class="section-title">Working <span class="highlight-text">Statistics</span></h2>
+  <div class="container text-center  appear-animation">
+    <span class="intro-text indie-flower-regular">This Are My Strongest Sides</span>
+    <h2 class="section-title abril-fatface-regular">Working <span class="highlight-text">Statistics</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -595,7 +639,7 @@
   </div>
 
   <!-- content-body -->
-  <div class="container mt-5">
+  <div class="container mt-5 appear-animation">
     <div class="row">
 
 
@@ -656,9 +700,9 @@
 
 
   <!-- title -->
-  <div class="container text-center">
-    <span class="intro-text">Showcasing Some Of My Best Work</span>
-    <h2 class="section-title">My <span class="highlight-text">Portfolio</span></h2>
+  <div class="container text-center appear-animation">
+    <span class="intro-text indie-flower-regular">Showcasing Some Of My Best Work</span>
+    <h2 class="section-title abril-fatface-regular">My <span class="highlight-text">Portfolio</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -719,9 +763,9 @@
 
 
   <!-- title -->
-  <div class="container text-center">
-    <span class="intro-text">Contact</span>
-    <h2 class="section-title">My <span class="highlight-text">Contact</span></h2>
+  <div class="container text-center  appear-animation">
+    <span class="intro-text indie-flower-regular">Contact</span>
+    <h2 class="section-title abril-fatface-regular">My <span class="highlight-text">Contact</span></h2>
     <div class="animation-container mt-3">
       <span class="shrinking-line animated-line"></span>
       <span class="static-line"></span>
@@ -731,7 +775,7 @@
   </div>
 
   <!-- content-body -->
-  <div class="container mt-5">
+  <div class="container mt-5 appear-animation">
     <div class="row py-lg-5">
       
       <div class="col-lg-6">
@@ -834,9 +878,28 @@
 
 
 
+
+
+
+
 <section class="default-section py-4">
   <div class="container pb-2 pt-4 d-flex justify-content-between align-items-center">
     <p class="text-white fw-bold">Copyright © {{currentYear}} All Rights Reserved.</p>
     <p class="text-white fw-bold">Designed & Developed by <a type="button" class="text-decoration-none" style="color: #FF4904;">ArunKumar</a></p>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

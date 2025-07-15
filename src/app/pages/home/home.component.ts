@@ -1,11 +1,14 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DateTime } from 'luxon';
 import emailjs from 'emailjs-com';
-
-
+import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import { About, ABOUT_DATA } from 'src/app/model/aboutDetails';
+import { Testimonial, TESTIMONIALS_DATA } from 'src/app/model/testimonial';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +19,18 @@ import emailjs from 'emailjs-com';
 export class HomeComponent implements OnInit {
   public currentYear: string = DateTime.now().toFormat('y');
   filteredPortFolioImages:any[]=[]
-
+  aboutText: About[] = ABOUT_DATA;
+  testimonialData:Testimonial[] = TESTIMONIALS_DATA;
+  darkTheme:boolean=true;
+  
   constructor(
     private route: ActivatedRoute,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    private spinner : NgxSpinnerService
   ) { }
 
 
-
+ 
  
   ngOnInit(): void {
     this.filteredPortFolioImages = this.portFolioImages;
@@ -49,36 +56,36 @@ export class HomeComponent implements OnInit {
 
 
 
-  aboutText = [
-    {
-      "option": "Full Name",
-      "answer": "AunKumar R"
-    },
-    {
-      "option": "DOB",
-      "answer": "06 June 2002  "
-    },
-    {
-      "option": "Experience",
-      "answer": "2.5 years"
-    },
-    {
-      "option": "Address",
-      "answer": "Tirupur"
-    },
-    {
-      "option": "Freelance",
-      "answer": "Available"
-    },
-    {
-      "option": "Phone",
-      "answer": "+91 96988 77357"
-    },
-    {
-      "option": "Email",
-      "answer": "arunrock1264708@gmail.com"
-    },
-  ]
+  // aboutText = [
+  //   {
+  //     "option": "Full Name",
+  //     "answer": "AunKumar R"
+  //   },
+  //   {
+  //     "option": "DOB",
+  //     "answer": "06 June 2002  "
+  //   },
+  //   {
+  //     "option": "Experience",
+  //     "answer": "2.5 years"
+  //   },
+  //   {
+  //     "option": "Address",
+  //     "answer": "Tirupur"
+  //   },
+  //   {
+  //     "option": "Freelance",
+  //     "answer": "Available"
+  //   },
+  //   {
+  //     "option": "Phone",
+  //     "answer": "+91 96988 77357"
+  //   },
+  //   {
+  //     "option": "Email",
+  //     "answer": "arunrock1264708@gmail.com"
+  //   },
+  // ]
 
 
   portFolioImages=[
@@ -209,24 +216,32 @@ export class HomeComponent implements OnInit {
 
 
   sendEmail(formContent: any) {
-    console.log('Sending email with the following content:', {
-        to_name: 'Arun Kumar',
-        from_name: formContent.name,
-        from_email: formContent.email,
-        message: formContent.message,
-    });
-
-    emailjs.send('service_tn5cphf', 'template_k69sizp', {
+    this.spinner.show();
+      emailjs.send('service_tn5cphf', 'template_k69sizp', {
         to_name: 'Arun Kumar',
         from_name: formContent.name,
         from_email: formContent.email,
         message: formContent.message, // Ensure 'message' matches the key in your template
     }, 'McvVrNswgF5atRBbJ')
     .then((response) => {
+      this.spinner.hide();
+      this.personalForm.reset();
+      this.sweetalert()
         console.log('Email sent successfully!', response.status, response.text);
     }, (error) => {
         console.log('Failed to send email.', error);
     });
+}
+
+sweetalert(){
+  Swal.fire({
+    title: 'Email Sent!',
+    text: 'Your email has been sent successfully. I will reply soon, sir/madam.',
+    icon: 'success',
+    showConfirmButton: false,
+    showCancelButton: false,
+    timer: 5000
+  })
 }
 
 
@@ -250,6 +265,65 @@ filterWorkingImages(value: string): any {
       this.filteredPortFolioImages = this.portFolioImages.filter(image => image.type === 'Figma');
       break;
   }
+}
+
+
+
+
+slides = [
+  { img: "assets/img/portfolio-images/img-6.jpg" },
+  { img: "assets/img/portfolio-images/img-7.jpg" },
+  { img: "assets/img/portfolio-images/img-8.jpg" },
+  
+];
+
+
+slideConfig = {
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplayDelay: 1000,
+  autoplaySpeed: 3500,
+  pauseOnHover: true,
+  infinite: true,
+  dots: true,
+  arrows: false,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
+
+
+
+
+@ViewChild('slickModal') slickModal!: SlickCarouselComponent;
+prev() {
+  this.slickModal.slickPrev();
+}
+
+next() {
+  this.slickModal.slickNext();
+}
+
+
+onThemeChanged(isDark: boolean) {
+  console.log('Dark Theme Enabled:', isDark);
+  // Apply dark theme logic here
+  this.darkTheme = isDark
 }
 
 

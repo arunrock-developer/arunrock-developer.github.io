@@ -1,0 +1,152 @@
+.uil--file-alt {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9 10h1a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2m0 2a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2Zm11-3.06a1.3 1.3 0 0 0-.06-.27v-.09a1 1 0 0 0-.19-.28l-6-6a1 1 0 0 0-.28-.19a.3.3 0 0 0-.09 0a.9.9 0 0 0-.33-.11H7a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3zm-6-3.53L16.59 8H15a1 1 0 0 1-1-1ZM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5v3a3 3 0 0 0 3 3h3Zm-3-3H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+
+/*======================
+hero
+========================*/
+
+@media (max-width: 576px) {
+  // .hero-section{
+  //   margin-top: 100px;
+  // }
+  .hero-img{
+  max-width: 250px !important;
+}
+
+.lead {
+  font-size: 1rem;
+  font-weight: 300;
+}
+}
+
+
+
+@media (min-width: 790px) {
+  .hero-img{
+  max-width: 400px !important;
+}
+  .hero-section{
+    min-height: 100vh;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+.lightTheme{
+
+  .text-col{
+    color: black !important;
+  }
+
+  .resume-button{
+    background-color:#EEEFEF;
+    padding: 10px 25px;
+    color: black;
+    transition: color 0.2s ease;
+
+    &:hover{
+      color: #FFC107;
+    }
+  }
+
+  .free-quote{
+    background-color: #474559;
+    padding: 10px 25px;
+    color: white;
+      transition: background-color 0.2s ease;
+        &:hover{
+      background-color: #FFC107;
+    }
+  }
+
+    .project-card{
+    box-shadow: 0px 0px 1px gray;
+  }
+
+
+}
+
+
+
+.element {
+    width: 0;
+    text-wrap: nowrap;
+    overflow: hidden !important;
+    animation: typing 3s steps(30) infinite alternate;
+}
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 15ch;
+    }
+}
+
+
+
+
+
+
+
+
+
+.darkTheme{
+
+    .text-col{
+    color: white !important;
+  }
+
+    .resume-button{
+    background-color: rgb(245, 245, 245);
+    padding: 10px 25px;
+    color: black;
+    transition: color 0.2s ease;
+
+    &:hover{
+      color: #FFC107;
+    }
+  }
+
+  .free-quote{
+    background-color: #474559;
+    padding: 10px 25px;
+    color: white;
+      transition: background-color 0.2s ease;
+        &:hover{
+      background-color: #FFC107;
+    }
+  }
+
+  .project-card{
+    background-color: #474559;
+    box-shadow: 0px 0px 1px lightgoldenrodyellow;
+  }
+
+}
+
+
+
+
+
+

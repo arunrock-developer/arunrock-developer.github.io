@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg fixed-top" [class.scrolled]="isScrolled">
-  <div class="container-fluid px-3 py-2 d-flex justify-content-between align-items-center">
+<nav class="navbar navbar-expand-lg fixed-top" [class.scrolled]="isScrolled" [ngClass]="darkTheme ? '#10101A' : 'bg-white'">
+  <div class="container px-3 py-2 d-flex justify-content-between align-items-center">
     <!-- Left Side - Brand Logo -->
-    <a class="navbar-brand fw-bold d-flex align-items-center text-white" type="button">
-      <!-- <img src="./assets/img/logo.png" height="50" alt="Logo"> -->ARUN
+    <a class="navbar-brand fw-bold d-flex align-items-center" type="button" [ngClass]="darkTheme ? 'text-white  ' : 'text-dark' ">
+      <!-- <img src="./assets/img/logo.png" height="50" alt="Logo"> -->ArunKumar R
     </a>
 
     <!-- Toggle Button for Mobile -->
@@ -12,12 +12,17 @@
     </button>
 
     <!-- Navigation Links -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+    <div class="collapse navbar-collapse justify-content-end align-items-end" id="navbarText">
       <ul class="navbar-nav gap-3">
         <li class="nav-item" *ngFor="let items of navLink">
-          <a class="nav-link" (click)="changeActive(items.active)" [style]="{'color': active == items.active ? '#FF4904': ''}" [routerLink]="'/'" [fragment]="items.link">{{ items.name }}</a>
+          <a class="nav-link" (click)="changeActive(items.active)" [style.color]="active == items.active ? '#FF4904' : (darkTheme ? '#ffffff' : '#000000')" [routerLink]="'/'" [fragment]="items.link">{{ items.name }}</a>
         </li>
-        
+         <li class="nav-item">
+          <a class="nav-link theme-icon" (click)="themeChange()"><i class="bi" [ngClass]="darkTheme ? 'bi-moon-fill text-light' : 'bi-sun-fill text-dark fs-6'"></i></a>
+        </li>
+         <li class="nav-item">
+         <a class="nav-link" href="../../../assets/ArunKumar-FrontEnd.pdf" [ngClass]="darkTheme ? 'text-light' : 'text-dark'" download="ArunKumar-FrontEnd.pdf">Resume</a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="" routerLink="/home" fragment="about">About</a>
         </li>

@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg fixed-top"
+     [ngClass]="{
+       'initial-nav': !isScrolled,
+       'custom-nav': isScrolled,
+       'bg-dark': isScrolled && isDarkTheme,
+       'bg-white': isScrolled && !isDarkTheme
+     }">
+
+  <div class="transition-container d-flex align-items-center justify-content-between mx-auto" [ngClass]="!isScrolled ? 'wide' : 'full'">
+
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <span class="uil--user me-2" [ngClass]="isDarkTheme ? 'text-white':'text-black'"></span>
+      <h3 class="maven-pro mb-0" [ngClass]="isDarkTheme ? 'text-white':'text-black'">Arun</h3>
+    </a>
+
+    <!-- Toggler (Mobile) -->
+    <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Desktop Nav -->
+    <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between align-items-center"
+      [ngClass]="isDarkTheme ? 'darkTheme':'lightTheme'" id="navbarNav">
+      <ul class="navbar-nav mx-auto mb-0 d-flex align-items-center gap-3">
+        <li class="nav-item"><a class="nav-link maven-pro-regular"  [routerLink]="'/'" fragment="about" >About</a></li>
+        <li class="nav-item"><a class="nav-link maven-pro-regular"  [routerLink]="'/'" fragment="projects"  href="#">Projects</a></li>
+        <li class="nav-item"><a class="nav-link maven-pro-regular"  href="../../../assets/ARUNKUMAR_FRONTEND.pdf"
+              download="Arunkumar_Frontend.pdf">Resume</a></li>
+        <li class="nav-item"><a class="nav-link maven-pro-regular" href="#contact">Contact</a></li>
+      </ul>
+      <div class="theme-mode d-flex align-items-center cursor-pointer ms-3">
+        <span class="me-2" role="button"
+          [ngClass]="isDarkTheme ? 'uil--sun text-white':'uil--moon text-dark'" 
+          (click)="themeToggle()">
+        </span>
+        <span class="maven-pro-bold" [ngClass]="isDarkTheme ? 'text-white':'text-black'" 
+          role="button" (click)="themeToggle()">Color mode</span>
+      </div>
+    </div>
+
+    <!-- Offcanvas Menu (Mobile) -->
+    <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link maven-pro-regular" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link maven-pro-regular" href="#">Projects</a></li>
+          <li class="nav-item"><a class="nav-link maven-pro-regular" href="#">Resume</a></li>
+          <li class="nav-item"><a class="nav-link maven-pro-regular" href="#">Contact</a></li>
+        </ul>
+        <div class="theme-mode d-flex align-items-center mt-4 cursor-pointer">
+          <span class="me-2" role="button"
+            [ngClass]="isDarkTheme ? 'uil--sun text-black':'uil--moon text-dark'" 
+            (click)="themeToggle()">
+          </span>
+          <span class="maven-pro-bold" role="button" (click)="themeToggle()">Color mode</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>

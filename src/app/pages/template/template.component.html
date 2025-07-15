@@ -1,0 +1,357 @@
+<app-template-nav (themeChanged)="theme($event)"></app-template-nav>
+
+<div
+  class="section"
+  [ngClass]="darkTheme ? 'darkTheme bg-dark' : 'lightTheme bg-white'"
+>
+  <section class="hero-section align-items-center d-flex">
+    <div class="container py-5 py-md-0">
+      <div
+        class="row align-items-center flex-column-reverse flex-md-row py-md-0 py-3"
+      >
+        <!-- Left Column (Text Content) -->
+        <div class="col-md-7 text-center text-lg-start mt-4 mt-lg-0">
+          <span class="maven-pro-extraBold text-col"
+            >Welcome to My Portfolio!</span
+          >
+          <h2 class="display-5 maven-pro-black mt-0 mt-md-4 text-col">
+            Hey folks, I'm <span class="element text-warning d-flex">{{currentWord}}</span>
+          </h2>
+          <p class="maven-pro-regular text-muted mt-4 lead text-col">
+            Front-End & Mobile App Developer with 2+ years of experience in
+            building high-performance web and mobile apps using Angular,
+            Flutter, and REST APIs. I specialize in creating responsive,
+            user-focused digital solutions that scale.
+          </p>
+          <div
+            class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-5"
+          >
+            <!-- Download Resume Button -->
+            <a
+              href="../../../assets/ARUNKUMAR_FRONTEND.pdf"
+              download="Arunkumar_Frontend.pdf"
+              class="resume-button rounded-pill maven-pro-bold px-4 py-2 d-inline-flex align-items-center text-decoration-none"
+              type="button"
+            >
+              <span class="uil--file-alt me-2"></span>
+              Download Resume
+            </a>
+
+            <!-- Get a Free Quote Button -->
+            <a
+              class="free-quote rounded-pill maven-pro-bold px-4 py-2 d-inline-flex align-items-center text-decoration-none"
+              type="button"
+              href="#contact"
+            >
+              Get a Free Quote
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column (Image) -->
+        <div class="col-md-5 text-center">
+          <img
+            src="../../../assets/img/vector-old.jpg"
+            alt="Hero Image"
+            class="hero-img img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2 class="display-5 text-center maven-pro-extraBold text-col">About</h2>
+ <div class="animation-container mb-md-5 mb-2 ">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+      <div class="row align-items-center">
+
+
+        <!-- Image Column (Optional) -->
+        <div class="col-lg-4 text-center mt-4 mt-lg-0 justify-content-center d-flex">
+          <img
+            src="../../../assets/img/vector-old.jpg"
+            alt="Arun Kumar"
+            class="img-fluid rounded-4 shadow-sm"
+            style="max-height: 400px"
+          />
+        </div>
+
+
+
+        <!-- Text Column -->
+        <div class="col-lg-8">
+          <p class="text-muted lead maven-pro-regular text-col">
+            I'm <strong>Arun Kumar</strong>, a passionate Front-End & Mobile App
+            Developer with over 2 years of hands-on experience. I specialize in
+            building dynamic, user-centric web and mobile applications using
+            <strong>Angular</strong> and <strong>Flutter</strong>. I have a
+            solid foundation in crafting clean, scalable code and integrating
+            robust REST APIs to deliver seamless user experiences.
+          </p>
+          <p class="text-muted lead maven-pro-regular text-col">
+            My expertise extends to
+            <strong
+              >TypeScript, Dart, GetX, Bootstrap, Angular Material, and Spring
+              Boot</strong
+            >
+            for backend collaboration. I thrive in agile teams and have a proven
+            track record of delivering high-quality projects—ranging from
+            full-featured eCommerce platforms to location-based delivery apps.
+          </p>
+          <p class="text-muted lead maven-pro-regular text-col">
+            I'm always eager to learn new technologies, solve complex problems,
+            and turn ideas into functional, elegant digital solutions.
+          </p>
+          
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+<section id="projects" class="project-section py-5">
+  <div class="container">
+    <h2 class="display-5 text-center maven-pro-extraBold text-col">Project Highlights</h2>
+     <div class="animation-container mb-md-5 mb-2 ">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Repeat for each project -->
+      <div class="col-md-6" *ngFor="let project of projects">
+        <div class="card h-100 project-card shadow-sm border-0 rounded-4">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold maven-pro-bold text-col mb-3">{{ project.title }}</h5>
+            <p class="card-text text-muted maven-pro-regular mb-3 text-col">
+              {{ project.description }}
+            </p>
+
+            <div class="">
+              <strong class="maven-pro-bold text-col">Tech Stack:</strong><br />
+              <span class="badge bg-warning text-dark me-1 mb-2" *ngFor="let tech of project.techStack">{{ tech }}</span>
+            </div>
+
+            <a *ngIf="project.link" [href]="project.link" target="_blank" [ngClass]="{'bg-light text-black':darkTheme,'bg-white text-dark':!darkTheme}" class="align-self-start mt-auto text-decoration-none small maven-pro-medium rounded-pill border px-2">
+              View Project
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="services" class="services-section py-5">
+  <div class="container">
+    <!-- <h2 class="text-center display-6 fw-bold text-col mb-5 maven-pro-extraBold">What I Offer</h2> -->
+    <h2 class="display-5  text-center maven-pro-extraBold text-col">What I Offer</h2>
+ <div class="animation-container mb-md-5 mb-2 ">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+    <div class="row g-4">
+
+      <!-- Service 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="project-card p-4 h-100 shadow-sm rounded-4 text-center">
+          <span class="uil uil-desktop icon fs-1 mb-3 text-col"></span>
+          <h5 class="fw-bold mb-2 maven-pro-bold text-col">Front-End Web Development</h5>
+          <p class="text-muted maven-pro-regular text-col">
+            Building fast, responsive websites using Angular, Bootstrap, and modern web architecture with clean, scalable code.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="project-card p-4 h-100 shadow-sm rounded-4 text-center">
+          <span class="uil uil-mobile-android icon fs-1 mb-3 text-col"></span>
+          <h5 class="fw-bold mb-2 maven-pro-bold text-col">Mobile App Development</h5>
+          <p class="text-muted maven-pro-regular text-col">
+            Cross-platform mobile applications using Flutter and GetX for smooth performance and beautiful UI on Android and iOS.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="project-card p-4 h-100 shadow-sm rounded-4 text-center">
+          <span class="uil uil-plug icon fs-1 mb-3 text-col"></span>
+          <h5 class="fw-bold mb-2 maven-pro-bold text-col">API Integration</h5>
+          <p class="text-muted maven-pro-regular text-col">
+            Integrating secure and efficient REST APIs for user auth, payments, product management, and real-time updates.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="py-5 contact" id="contact">
+
+
+  <!-- title -->
+  <div class="container text-center">
+    <h2 class="display-5 text-center maven-pro-extraBold text-col">Contact</h2>
+    <div class="animation-container mb-md-5 mb-2 ">
+      <span class="shrinking-line animated-line"></span>
+      <span class="static-line"></span>
+      <span class="expanding-line animated-line"></span>
+    </div>
+  </div>
+
+  <!-- content-body -->
+  <div class="container mt-5">
+    <div class="row py-lg-5">
+      
+      <div class="col-lg-6">
+
+        <div class="row mb-4">
+          <div class="col-auto">
+            <div class="icon">
+              <i class="bi bi-geo-alt-fill text-warning  fs-3"></i>
+            </div>
+          </div>
+          <div class="col">
+            <h4 class="text-col maven-pro-semiBold">Address</h4>
+            <p class="text-col maven-pro-regular">2/168 b, Iduvampalayam, Tirupu- 641 687</p>
+          </div>
+        </div>
+
+
+        <div class="row mb-4">
+          <div class="col-auto">
+            <div class="icon">
+              <i class="bi bi-envelope-fill text-warning fs-3"></i>
+            </div>
+          </div>
+          <div class="col">
+            <h4 class="text-col maven-pro-semiBold">E-mail Us</h4>
+            <p class="text-col maven-pro-regular">arunrock1264708&#64;gmail.com</p>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-auto">
+            <div class="icon">
+              <i class="bi bi-telephone-fill text-warning  fs-3"></i>
+            </div>
+          </div>
+          <div class="col">
+            <h4 class="text-col maven-pro-semiBold">Contact</h4>
+            <p class="text-col maven-pro-regular">+91 96988 77357</p>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="col-lg-6 text-start">
+        <form [formGroup]="personalForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="name" placeholder="Your Name"
+             [ngClass]="{'is-invalid': personalForm.get('name')?.invalid && personalForm.get('name')?.touched,
+             'is-valid': personalForm.get('name')?.valid && personalForm.get('name')?.touched}"
+             >
+          </div>
+          <div class="col-md-6">
+            <input type="email" class="form-control" formControlName="email" placeholder="Your Email"
+            [ngClass]="{'is-invalid': personalForm.get('email')?.invalid && personalForm.get('email')?.touched,
+             'is-valid': personalForm.get('email')?.valid && personalForm.get('email')?.touched}"
+            >
+          </div>
+        </div>
+      
+        <div class="row mt-4">
+          <div class="col-12">
+            <textarea class="form-control" placeholder="Your Message" formControlName="message" rows="5"
+            [ngClass]="{'is-invalid': personalForm.get('message')?.invalid && personalForm.get('message')?.touched,
+             'is-valid': personalForm.get('message')?.valid && personalForm.get('message')?.touched}"
+            ></textarea>
+          </div>
+        </div>
+
+
+        <div class="col-12 mt-4 text-center">
+           <span
+              class="free-quote rounded-pill maven-pro-bold px-4 py-2 d-inline-flex align-items-center"
+              type="button" (click)="formValidation()"
+            >
+             Send e-mail
+            </span>
+
+        </div>
+       
+      </form>
+      </div>
+      
+
+
+
+    </div>
+
+
+    <div class="row">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1215.2661168571135!2d77.31136414745136!3d11.079258999157375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9076740f6307d%3A0xb90f0e297024c793!2s38H6%2BW84%2C%20Iduvampalayam%2C%20Tiruppur%2C%20Murugampalayam%2C%20Tamil%20Nadu%20641687!5e0!3m2!1sen!2sin!4v1740805680184!5m2!1sen!2sin"
+       width="600" height="350" class="rounded-4" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+
+
+
+
+</div>
