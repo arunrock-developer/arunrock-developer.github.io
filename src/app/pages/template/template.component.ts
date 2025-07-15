@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   ]
 })
 
+
 export class TemplateComponent implements OnInit {
   darkTheme :boolean=false
 
@@ -32,13 +33,13 @@ export class TemplateComponent implements OnInit {
   theme(isDark: boolean){
     this.darkTheme = isDark
   }
-  
-    words: string[] = [ 
+
+    words: string[] = [
     "Frontend Developer",
     "Flutter Developer",
     "Angular Developer",
     "Figma Designer",
-   
+
   ];
     currentWord: string = this.words[0];
   wordIndex: number = 0;
@@ -53,7 +54,7 @@ export class TemplateComponent implements OnInit {
   }
 
 
-  
+
 
   projects = [
   {
