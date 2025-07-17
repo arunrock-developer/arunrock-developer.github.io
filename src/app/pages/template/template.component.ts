@@ -1,10 +1,16 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit,ElementRef,ViewChild } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 @Component({
   selector: 'app-template',
@@ -14,14 +20,66 @@ import Swal from 'sweetalert2';
   ]
 })
 
-export class TemplateComponent implements OnInit {
+export class TemplateComponent implements OnInit, AfterViewInit {
   darkTheme :boolean=false
+  // @ViewChild('heroImg') heroImg!: ElementRef;
+  // @ViewChild('aboutImg') aboutImg!: ElementRef;
+  // @ViewChild('triggerSection') triggerSection!: ElementRef;
+
 
   constructor(
         private route: ActivatedRoute,
         private viewportScroller: ViewportScroller,
         private spinner : NgxSpinnerService
   ) { }
+
+
+ @ViewChild('heroImg') heroImg!: ElementRef;
+  @ViewChild('triggerSection') triggerSection!: ElementRef;
+ ngAfterViewInit(): void {
+    const hero = this.heroImg.nativeElement;
+    const trigger = this.triggerSection.nativeElement;
+
+    // 💥 Entry animation (on page load)
+    gsap.fromTo(
+      hero,
+       {
+    scale: 0.8,
+    opacity: 0,
+    rotate: 100,
+    y: -500,
+  },
+  {
+    scale: 1,
+    opacity: 1,
+    rotate: 0,
+    y: 0,
+    x:0,
+    duration: 1.4,
+    ease: 'power3.out',
+    delay: 0.5,
+  }
+    );
+
+    // 🌟 Scroll-linked transformation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: trigger,
+        start: 'top bottom',     // trigger when about section enters bottom
+        end: 'top top',          // until it's at top
+        scrub: 1.2,              // buttery smooth
+        markers: false,
+      }
+    });
+
+    tl.to(hero, {
+      scale: 0.6,
+      x: () => window.innerWidth > 768 ? -800 : -80,
+      y: () => window.innerWidth > 768 ? 720 : 100,
+      rotateY: 12,
+      ease: 'power1.inOut',
+    });
+  }
 
   ngOnInit(): void {
     this.startTypingEffect();

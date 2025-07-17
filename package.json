@@ -20,6 +20,7 @@
     "@angular/router": "^14.2.0",
     "@sweetalert2/ngx-sweetalert2": "^13.0.0",
     "emailjs-com": "^3.2.0",
+    "gsap": "^3.13.0",
     "jquery": "^3.7.1",
     "luxon": "^3.5.0",
     "ngx-slick-carousel": "^0.6.0",
@@ -27,6 +28,7 @@
     "ngx-toastr": "^14.3.0",
     "rxjs": "~7.5.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.22.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
