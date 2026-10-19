@@ -1,0 +1,71 @@
+<div
+  #portfolioPageContainer
+  class="portfolio-root"
+  [class.theme-dark]="currentTheme === 'dark'"
+  [class.theme-light]="currentTheme === 'light'"
+>
+  <!-- Sticky Minimal Navigation Bar -->
+  <app-portfolio-nav
+    [currentTheme]="currentTheme"
+    (themeToggled)="onThemeToggled($event)"
+  ></app-portfolio-nav>
+
+  <!-- Main Content Flow -->
+  <main id="main-content" class="portfolio-main-flow">
+    
+    <!-- 01 Hero Section -->
+    <app-portfolio-hero
+      [profile]="profile"
+    ></app-portfolio-hero>
+
+    <hr class="pf-separator" />
+
+    <!-- 02 About Section -->
+    <app-portfolio-about
+      [profile]="profile"
+    ></app-portfolio-about>
+
+    <hr class="pf-separator" />
+
+    <!-- 03 Technical Capabilities & Skills -->
+    <app-portfolio-skills
+      [categories]="skillCategories"
+    ></app-portfolio-skills>
+
+    <hr class="pf-separator" />
+
+    <!-- 04 Career & Experience Timeline -->
+    <app-portfolio-experience
+      [experienceList]="experienceList"
+    ></app-portfolio-experience>
+
+    <hr class="pf-separator" />
+
+    <!-- 05 Featured & Supporting Projects Gallery -->
+    <app-portfolio-projects
+      [projects]="projectsList"
+      (projectSelected)="openProjectModal($event)"
+    ></app-portfolio-projects>
+
+    <hr class="pf-separator" />
+
+    <!-- 06 Contact & Inquiries Section -->
+    <app-portfolio-contact
+      [profile]="profile"
+    ></app-portfolio-contact>
+
+  </main>
+
+  <!-- Footer -->
+  <app-portfolio-footer
+    [profile]="profile"
+    [navItems]="navItems"
+  ></app-portfolio-footer>
+
+  <!-- Interactive Project Detail Case Study Modal -->
+  <app-portfolio-project-detail-modal
+    [project]="selectedProject"
+    [isOpen]="isDetailModalOpen"
+    (close)="closeProjectModal()"
+  ></app-portfolio-project-detail-modal>
+</div>

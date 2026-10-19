@@ -1,0 +1,432 @@
+.portfolio-skills-section {
+  position: relative;
+}
+
+// Category Filter Buttons
+.cat-filter-btn {
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background-color: var(--pf-bg-card);
+  border: 1px solid var(--pf-border-subtle);
+  color: var(--pf-text-secondary);
+  font-family: var(--pf-font-display);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: var(--pf-accent);
+    color: var(--pf-text-primary);
+    transform: translateY(-2px);
+  }
+
+  &.active {
+    background-color: var(--pf-accent);
+    border-color: var(--pf-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 14px var(--pf-glow);
+  }
+}
+
+// Gallery Nav & Hint Controls
+.skills-gallery-controls {
+  .gallery-scroll-hint {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--pf-accent);
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background: var(--pf-badge-bg);
+    border: 1px solid var(--pf-badge-border);
+
+    .terminal-prompt {
+      color: var(--pf-accent-cyan);
+    }
+  }
+
+  .gallery-nav-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--pf-bg-card);
+    border: 1px solid var(--pf-border-subtle);
+    color: var(--pf-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--pf-accent);
+      border-color: var(--pf-accent);
+      color: #ffffff;
+      box-shadow: 0 4px 12px var(--pf-glow);
+      transform: scale(1.05);
+    }
+  }
+}
+
+// ==========================================
+// Horizontal Scrolling Gallery Wrapper
+// ==========================================
+.skills-horizontal-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  // Desktop (Pin & GSAP Scrub)
+  @media (min-width: 992px) {
+    overflow: hidden;
+    padding: 24px 0 32px;
+  }
+
+  // Tablet & Mobile (Touch Swipe Carousel Fallback)
+  @media (max-width: 991px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 16px;
+    padding: 12px 4px 24px;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 9999px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--pf-accent);
+      border-radius: 9999px;
+    }
+  }
+}
+
+.skills-horizontal-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  align-items: stretch;
+  will-change: transform;
+
+  @media (max-width: 991px) {
+    gap: 16px;
+  }
+}
+
+// Domain Gallery Card (Glassmorphic)
+.domain-gallery-card {
+  width: 380px;
+  flex-shrink: 0;
+  min-height: 460px;
+  padding: 30px;
+  border-radius: 22px;
+  background: var(--pf-glass-bg);
+  backdrop-filter: var(--pf-glass-blur);
+  -webkit-backdrop-filter: var(--pf-glass-blur);
+  border: 1px solid var(--pf-glass-border);
+  box-shadow: var(--pf-card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  will-change: transform;
+
+  @media (max-width: 991px) {
+    width: 85vw;
+    max-width: 360px;
+    scroll-snap-align: start;
+    min-height: 420px;
+    padding: 24px;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: var(--pf-border-active);
+    box-shadow: 0 16px 36px -10px var(--pf-glow);
+  }
+
+  .domain-index {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .domain-count-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    background: var(--pf-badge-bg);
+    color: var(--pf-badge-text);
+    border: 1px solid var(--pf-badge-border);
+  }
+
+  .domain-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--pf-badge-bg) 0%, rgba(56, 189, 248, 0.12) 100%);
+    border: 1px solid var(--pf-badge-border);
+    color: var(--pf-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  .domain-name {
+    font-family: var(--pf-font-display);
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--pf-text-primary);
+  }
+
+  .domain-sql-query {
+    font-size: 0.72rem;
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .domain-desc {
+    line-height: 1.55;
+  }
+}
+
+// Skill Pills Cluster
+.skill-pill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 10px;
+  background-color: var(--pf-bg-surface);
+  border: 1px solid var(--pf-border-subtle);
+  transition: all 0.25s ease;
+
+  .skill-name {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--pf-text-primary);
+  }
+
+  .skill-level-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--pf-border-subtle);
+    color: var(--pf-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .core-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--pf-accent);
+    box-shadow: 0 0 6px var(--pf-accent);
+  }
+
+  &.highlight {
+    border-color: var(--pf-border-active);
+    background: linear-gradient(135deg, var(--pf-bg-surface), var(--pf-badge-bg));
+
+    .skill-level-tag {
+      background: var(--pf-badge-bg);
+      color: var(--pf-badge-text);
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--pf-accent);
+    box-shadow: 0 4px 12px -2px var(--pf-glow);
+  }
+}
+
+// ==========================================
+// Mivon "Approach" Style: Architecture Spotlight
+// ==========================================
+.approach-architecture-spotlight {
+  border-radius: 28px;
+  background: var(--pf-glass-bg);
+  backdrop-filter: var(--pf-glass-blur);
+  -webkit-backdrop-filter: var(--pf-glass-blur);
+  border: 1px solid var(--pf-glass-border);
+  box-shadow: var(--pf-card-shadow);
+
+  .blueprint-sql-watermark {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--pf-accent);
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .spotlight-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .spotlight-title {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--pf-text-primary);
+    line-height: 1.25;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .spotlight-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  // Monospace Terminal Box
+  .architecture-terminal {
+    border-radius: 14px;
+    background: rgba(10, 15, 26, 0.85);
+    border: 1px solid var(--pf-border-medium);
+    overflow: hidden;
+
+    .terminal-window-header {
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--pf-border-subtle);
+      font-size: 0.72rem;
+
+      .terminal-traffic-lights {
+        .light {
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+
+          &.red { background-color: #ef4444; }
+          &.yellow { background-color: #f59e0b; }
+          &.green { background-color: #10b981; }
+        }
+      }
+
+      .terminal-filename {
+        color: var(--pf-text-muted);
+      }
+    }
+
+    .terminal-body {
+      font-size: 0.76rem;
+      line-height: 1.6;
+
+      .code-line {
+        color: var(--pf-text-secondary);
+      }
+
+      .token-keyword { color: var(--pf-accent); font-weight: 600; }
+      .token-prop { color: var(--pf-accent-cyan); }
+      .token-class { color: #f59e0b; }
+      .token-string { color: #10b981; }
+      .token-number { color: #ec4899; }
+      .token-comment { color: var(--pf-text-muted); font-style: italic; }
+    }
+  }
+
+  // Approach Metrics Row
+  .approach-metrics-row {
+    .approach-metric-badge {
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: var(--pf-bg-surface);
+      border: 1px solid var(--pf-border-subtle);
+      display: flex;
+      flex-direction: column;
+
+      .metric-val {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .metric-lbl {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--pf-text-muted);
+        letter-spacing: 0.05em;
+      }
+    }
+  }
+
+  // Right Column: Pillars Grid
+  .approach-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .approach-pillar-card {
+    padding: 22px;
+    border-radius: 18px;
+    background: var(--pf-bg-card);
+    border: 1px solid var(--pf-border-subtle);
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--pf-border-active);
+      box-shadow: 0 10px 24px -6px var(--pf-glow);
+    }
+
+    .pillar-brace {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .pillar-icon {
+      font-size: 1.35rem;
+    }
+
+    .pillar-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--pf-text-primary);
+    }
+
+    .pillar-desc {
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .pillar-code-tag {
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--pf-border-subtle);
+      font-size: 0.72rem;
+      color: var(--pf-accent-cyan);
+      display: inline-block;
+    }
+  }
+}

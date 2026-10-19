@@ -1,0 +1,265 @@
+<section id="skills" #skillsSection class="portfolio-skills-section py-6">
+  <div class="container-xl">
+    
+    <!-- Section Header -->
+    <div class="skills-header mb-5">
+      <div class="pf-section-eyebrow">
+        <span class="eyebrow-num">03</span>
+        <span class="eyebrow-dot"></span>
+        <span>TECHNICAL CAPABILITIES</span>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-4">
+        <div>
+          <h2 class="pf-section-title mb-2">
+            A battle-tested stack built for reliability.
+          </h2>
+          <p class="pf-section-subtitle mb-0">
+            Categorized by production application domain. Explore the horizontal gallery below or filter by specific technical area.
+          </p>
+        </div>
+
+        <!-- Desktop Horizontal Gallery Scroll Hint / Controls -->
+        <div class="skills-gallery-controls d-flex align-items-center gap-3">
+          <div class="gallery-scroll-hint d-none d-lg-flex align-items-center gap-2 pf-mono">
+            <span class="terminal-prompt">$</span>
+            <span>PINNED_GALLERY // SCROLL_HORIZONTAL</span>
+          </div>
+          <div class="gallery-nav-buttons d-flex gap-2">
+            <button
+              type="button"
+              class="gallery-nav-btn"
+              (click)="scrollTrack(-1)"
+              aria-label="Scroll left in skills gallery"
+              title="Previous domain"
+            >
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <button
+              type="button"
+              class="gallery-nav-btn"
+              (click)="scrollTrack(1)"
+              aria-label="Scroll right in skills gallery"
+              title="Next domain"
+            >
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills-row d-flex flex-wrap gap-2 pt-4">
+        <button
+          type="button"
+          class="cat-filter-btn"
+          [class.active]="activeCategoryId === 'all'"
+          (click)="selectCategory('all')"
+        >
+          All Domains ({{ categories.length }})
+        </button>
+        <button
+          *ngFor="let cat of categories; let idx = index"
+          type="button"
+          class="cat-filter-btn"
+          [class.active]="activeCategoryId === cat.id"
+          (click)="selectCategory(cat.id)"
+        >
+          <i class="bi me-1" [ngClass]="'bi-' + cat.icon"></i>
+          {{ cat.name }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Horizontal Scrolling Gallery Section (Pinned on Desktop via GSAP ScrollTrigger) -->
+    <div #skillsWrapper class="skills-horizontal-wrapper">
+      <div #skillsTrack class="skills-horizontal-track">
+        
+        <div
+          *ngFor="let domain of displayedCategories; let i = index"
+          class="domain-gallery-card pf-glass"
+        >
+          <!-- Card Monospace Header -->
+          <div class="card-meta-bar d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom border-secondary border-opacity-25 pf-mono">
+            <span class="domain-index text-primary">// 0{{ i + 1 }}_DOMAIN</span>
+            <span class="domain-count-badge">{{ domain.skills.length }} SKILLS</span>
+          </div>
+
+          <!-- Domain Title & Icon -->
+          <div class="domain-title-group d-flex align-items-center gap-3 mb-3">
+            <div class="domain-icon-box">
+              <i class="bi" [ngClass]="'bi-' + domain.icon"></i>
+            </div>
+            <div>
+              <h3 class="domain-name mb-0">{{ domain.name }}</h3>
+              <div class="domain-sql-query pf-mono small text-muted-custom">
+                SELECT * FROM {{ domain.id }}_stack;
+              </div>
+            </div>
+          </div>
+
+          <!-- Domain Description -->
+          <p class="domain-desc text-secondary small mb-4">
+            {{ domain.shortDescription }}
+          </p>
+
+          <!-- Skills Tag Cluster -->
+          <div class="skills-tags-cluster d-flex flex-wrap gap-2 pt-2 mb-4">
+            <div
+              *ngFor="let skill of domain.skills"
+              class="skill-pill-item"
+              [class.highlight]="skill.highlight"
+            >
+              <span class="skill-name">{{ skill.name }}</span>
+              <span *ngIf="skill.level" class="skill-level-tag">{{ skill.level }}</span>
+              <span *ngIf="skill.highlight" class="core-dot" title="Core Production Focus"></span>
+            </div>
+          </div>
+
+          <!-- Monospace Footer Watermark -->
+          <div class="card-footer-meta mt-auto pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between pf-mono small text-muted-custom">
+            <span>&#123; verified_in_prod: true &#125;</span>
+            <span class="text-accent-cyan">#ENTERPRISE</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mivon "Approach" Style: Angular Enterprise Architecture Spotlight -->
+    <div class="approach-architecture-spotlight mt-6 p-4 p-md-5 pf-glass position-relative overflow-hidden">
+      <!-- Decorative SQL Query Background Watermark -->
+      <div class="blueprint-sql-watermark pf-mono d-none d-lg-block" aria-hidden="true">
+        -- ARCHITECTURE_APPROACH_SCHEMA.SQL<br>
+        SELECT pattern, auth_guard, state_flow, bundle_strategy<br>
+        FROM enterprise_architecture_manifest<br>
+        WHERE status = 'ACTIVE' AND modules >= 35;
+      </div>
+
+      <div class="row align-items-stretch g-4 g-lg-5 position-relative z-1">
+        
+        <!-- Left Column: Architectural Intent & Monospace Code Contract -->
+        <div class="col-lg-5 d-flex flex-column justify-content-between">
+          <div>
+            <div class="spotlight-eyebrow pf-mono mb-2">
+              <span class="text-primary">// 03.1_APPROACH</span> · ENTERPRISE ARCHITECTURE
+            </div>
+            <h3 class="spotlight-title pf-display mb-3">
+              Angular Enterprise Architecture
+            </h3>
+            <p class="spotlight-desc text-secondary mb-4">
+              How I structure frontend code to maintain high developer velocity, zero technical debt, and instant state reactivity across 35+ production modules.
+            </p>
+          </div>
+
+          <!-- Monospace Terminal Blueprint Window -->
+          <div class="architecture-terminal pf-mono mt-3">
+            <div class="terminal-window-header d-flex align-items-center justify-content-between">
+              <div class="terminal-traffic-lights d-flex gap-1">
+                <span class="light red"></span>
+                <span class="light yellow"></span>
+                <span class="light green"></span>
+              </div>
+              <span class="terminal-filename">enterprise_pipeline.contract.ts</span>
+              <span class="terminal-status text-success">READY</span>
+            </div>
+            <div class="terminal-body p-3">
+              <div class="code-line"><span class="token-keyword">@Injectable</span>(&#123; <span class="token-prop">providedIn</span>: <span class="token-string">'root'</span> &#125;)</div>
+              <div class="code-line"><span class="token-keyword">export class</span> <span class="token-class">EnterpriseArchitecture</span> &#123;</div>
+              <div class="code-line ps-3"><span class="token-keyword">readonly</span> <span class="token-prop">modules</span> = <span class="token-number">35</span>; <span class="token-comment">// ERP & POS</span></div>
+              <div class="code-line ps-3"><span class="token-keyword">readonly</span> <span class="token-prop">interceptor</span> = <span class="token-class">AuthTokenRefresh</span>;</div>
+              <div class="code-line ps-3"><span class="token-keyword">readonly</span> <span class="token-prop">stateFlow</span> = <span class="token-class">BehaviorSubject</span>;</div>
+              <div class="code-line ps-3"><span class="token-keyword">readonly</span> <span class="token-prop">loadOptimization</span> = <span class="token-string">'-35% bundle'</span>;</div>
+              <div class="code-line">&#125;</div>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="approach-metrics-row d-flex flex-wrap gap-3 mt-4 pt-2">
+            <div class="approach-metric-badge">
+              <span class="metric-val text-primary pf-display">35+</span>
+              <span class="metric-lbl pf-mono">LIVE MODULES</span>
+            </div>
+            <div class="approach-metric-badge">
+              <span class="metric-val text-info pf-display">-35%</span>
+              <span class="metric-lbl pf-mono">LOAD TIME</span>
+            </div>
+            <div class="approach-metric-badge">
+              <span class="metric-val text-warning pf-display">100%</span>
+              <span class="metric-lbl pf-mono">TYPE SAFE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Asymmetric Architectural Pillars with Curly Braces -->
+        <div class="col-lg-7">
+          <div class="approach-pillars-grid">
+            
+            <!-- Pillar 1 -->
+            <div class="approach-pillar-card">
+              <div class="pillar-header d-flex align-items-center justify-content-between mb-2">
+                <span class="pillar-brace pf-mono text-primary">&#123; 01 &#125;</span>
+                <i class="bi bi-shield-lock-fill pillar-icon text-primary"></i>
+              </div>
+              <h4 class="pillar-title pf-display mb-2">HTTP Interceptors & Auth Guards</h4>
+              <p class="pillar-desc text-secondary mb-3">
+                Centralized Bearer token attachment, automatic 401 refresh cycles, and role-based route protection without per-service boilerplate duplication.
+              </p>
+              <div class="pillar-code-tag pf-mono">
+                <code>interceptor: HttpInterceptorFn;</code>
+              </div>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="approach-pillar-card">
+              <div class="pillar-header d-flex align-items-center justify-content-between mb-2">
+                <span class="pillar-brace pf-mono text-info">&#123; 02 &#125;</span>
+                <i class="bi bi-box-seam-fill pillar-icon text-info"></i>
+              </div>
+              <h4 class="pillar-title pf-display mb-2">Shared UI Component Libraries</h4>
+              <p class="pillar-desc text-secondary mb-3">
+                High-throughput reactive data tables, debounced search filters, confirmation modals, and skeleton states ensuring rock-solid UX consistency.
+              </p>
+              <div class="pillar-code-tag pf-mono">
+                <code>shared: CoreDataTableModule;</code>
+              </div>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="approach-pillar-card">
+              <div class="pillar-header d-flex align-items-center justify-content-between mb-2">
+                <span class="pillar-brace pf-mono text-warning">&#123; 03 &#125;</span>
+                <i class="bi bi-lightning-charge-fill pillar-icon text-warning"></i>
+              </div>
+              <h4 class="pillar-title pf-display mb-2">RxJS Reactive State Streams</h4>
+              <p class="pillar-desc text-secondary mb-3">
+                Predictable unidirectional data flow using BehaviorSubject and async pipes, completely avoiding unnecessary change detection cycles and memory leaks.
+              </p>
+              <div class="pillar-code-tag pf-mono">
+                <code>stream$: Observable&lt;EntityState&gt;;</code>
+              </div>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="approach-pillar-card">
+              <div class="pillar-header d-flex align-items-center justify-content-between mb-2">
+                <span class="pillar-brace pf-mono text-success">&#123; 04 &#125;</span>
+                <i class="bi bi-speedometer2 pillar-icon text-success"></i>
+              </div>
+              <h4 class="pillar-title pf-display mb-2">Code Splitting & Lazy Bundles</h4>
+              <p class="pillar-desc text-secondary mb-3">
+                Domain-driven route loading reducing initial client boot times by ~35% and bundle size by ~20%, with granular vendor chunk isolation.
+              </p>
+              <div class="pillar-code-tag pf-mono">
+                <code>loadChildren: () =&gt; import(...);</code>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
