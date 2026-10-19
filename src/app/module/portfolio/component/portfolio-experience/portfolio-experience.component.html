@@ -1,0 +1,278 @@
+<section id="experience" #experienceSection class="portfolio-experience-section py-6 position-relative">
+  
+  <!-- Subtle Floating Decorative Code Elements in Background -->
+  <div class="floating-code-accent code-accent-1 pf-mono d-none d-md-block" aria-hidden="true">&#123; &#125;</div>
+  <div class="floating-code-accent code-accent-2 pf-mono d-none d-md-block" aria-hidden="true">=&gt;</div>
+  <div class="floating-code-accent code-accent-3 pf-mono d-none d-md-block" aria-hidden="true">;</div>
+  <div class="floating-code-accent code-accent-4 pf-mono d-none d-md-block" aria-hidden="true">&lt;/&gt;</div>
+  <div class="floating-code-accent code-accent-5 pf-mono d-none d-md-block" aria-hidden="true">() =&gt;</div>
+
+  <div class="container-xl position-relative z-2">
+    
+    <!-- Section Header -->
+    <div class="experience-header mb-4 mb-lg-5">
+      <div class="pf-section-eyebrow">
+        <span class="eyebrow-num">04</span>
+        <span class="eyebrow-dot"></span>
+        <span>CAREER PLAYGROUND</span>
+      </div>
+      <h2 class="pf-section-title">
+        Enterprise Experience & Engineering Track Record
+      </h2>
+      <p class="pf-section-subtitle mb-0">
+        Interactive IDE environment. Switch files in the explorer to inspect production deliverables, architectural patterns, and performance logs.
+      </p>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- The IDE Window Container (VS Code / Coding Playground)    -->
+    <!-- ======================================================== -->
+    <div #ideWindow class="ide-window-frame shadow-2xl">
+      
+      <!-- Window Top Title & Tabs Bar -->
+      <div class="ide-top-bar d-flex align-items-center justify-content-between px-3">
+        
+        <!-- Left: macOS Colored Dots & Breadcrumb -->
+        <div class="d-flex align-items-center gap-3">
+          <div class="ide-traffic-dots d-flex align-items-center gap-2">
+            <span class="traffic-dot dot-red" title="Close"></span>
+            <span class="traffic-dot dot-yellow" title="Minimize"></span>
+            <span class="traffic-dot dot-green" title="Maximize"></span>
+          </div>
+          <span class="ide-breadcrumb pf-mono d-none d-sm-inline-block text-muted-custom small">
+            arun-developer-workspace &gt; career_timeline
+          </span>
+        </div>
+
+        <!-- Center: File Tabs -->
+        <div class="ide-tabs-row d-flex align-items-center">
+          <button
+            *ngFor="let item of experienceList"
+            type="button"
+            class="ide-tab-btn pf-mono d-flex align-items-center gap-2"
+            [class.active]="selectedExperienceId === item.id"
+            (click)="selectExperience(item.id)"
+            [attr.aria-label]="'Open ' + item.company + ' experience file'"
+          >
+            <span class="tab-icon-ts">TS</span>
+            <span class="tab-filename">{{ getFileTabName(item.id) }}</span>
+            <span *ngIf="item.isCurrent" class="tab-badge-live">LIVE</span>
+            <span class="tab-close-icon">×</span>
+          </button>
+        </div>
+
+        <!-- Right: Environment Status Pills -->
+        <div class="ide-env-badges d-none d-md-flex align-items-center gap-3 pf-mono small text-muted-custom">
+          <span class="badge-ts"><i class="bi bi-shield-check text-success me-1"></i>TypeScript 5.4</span>
+          <span class="badge-utf">UTF-8</span>
+        </div>
+      </div>
+
+      <!-- Main IDE Workspace Body: Sidebar + Code Editor -->
+      <div class="ide-body-layout d-flex flex-column flex-lg-row">
+        
+        <!-- ========================================== -->
+        <!-- Narrow Left Sidebar: File Explorer Tree    -->
+        <!-- ========================================== -->
+        <div class="ide-sidebar pf-mono">
+          
+          <!-- Explorer Header -->
+          <div class="sidebar-section-title d-flex align-items-center justify-content-between px-3 py-2">
+            <span>EXPLORER</span>
+            <i class="bi bi-three-dots"></i>
+          </div>
+
+          <!-- Workspace Tree Group -->
+          <div class="sidebar-tree-group px-2 py-1">
+            <div class="tree-root-label d-flex align-items-center gap-1 px-2 py-1 text-muted-custom small">
+              <i class="bi bi-chevron-down"></i>
+              <span>WORKSPACE: EXPERIENCE</span>
+            </div>
+
+            <div class="tree-folder-group ps-3">
+              <div class="tree-folder-label d-flex align-items-center gap-2 px-2 py-1 text-muted-custom small">
+                <i class="bi bi-folder2-open text-warning"></i>
+                <span>companies/</span>
+              </div>
+
+              <!-- Company Files Tree Items -->
+              <div class="tree-files-list ps-2">
+                <button
+                  *ngFor="let item of experienceList; let idx = index"
+                  type="button"
+                  class="sidebar-file-btn d-flex align-items-center justify-content-between w-100 px-2 py-1"
+                  [class.active]="selectedExperienceId === item.id"
+                  (click)="selectExperience(item.id)"
+                >
+                  <div class="d-flex align-items-center gap-2 text-truncate">
+                    <span class="tree-ts-icon">TS</span>
+                    <span class="file-name text-truncate">{{ getFileTabName(item.id) }}</span>
+                  </div>
+                  <span *ngIf="item.isCurrent" class="status-dot-active" title="Active Production Role"></span>
+                  <span *ngIf="!item.isCurrent" class="status-dot-done" title="Verified Record"></span>
+                </button>
+              </div>
+
+              <!-- Database Schema File -->
+              <div class="tree-folder-label d-flex align-items-center gap-2 px-2 py-1 mt-2 text-muted-custom small">
+                <i class="bi bi-folder2 text-info"></i>
+                <span>database/</span>
+              </div>
+              <div class="tree-files-list ps-2">
+                <div class="sidebar-file-static d-flex align-items-center gap-2 px-2 py-1 text-muted-custom small">
+                  <i class="bi bi-database text-info"></i>
+                  <span>operations.sql</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active File Quick Info Widget in Sidebar -->
+          <div class="sidebar-meta-panel p-3 mt-auto border-top border-secondary border-opacity-25 d-none d-lg-block">
+            <div class="meta-panel-title small text-muted-custom mb-2">// ACTIVE_CONTEXT</div>
+            <div class="meta-role-label fw-bold text-primary mb-1">{{ activeItem.role }}</div>
+            <div class="meta-company-label small text-secondary mb-1">{{ activeItem.company }}</div>
+            <div class="meta-period-label small text-muted-custom">
+              <i class="bi bi-calendar3 me-1"></i>{{ activeItem.period }}
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- Center & Right: Code Editor & Gutter       -->
+        <!-- ========================================== -->
+        <div class="ide-editor-container flex-grow-1 position-relative">
+          
+          <div #editorContent class="ide-editor-content d-flex pf-mono">
+            
+            <!-- Code Line Numbers Gutter -->
+            <div class="editor-gutter py-3 px-2 text-end user-select-none" aria-hidden="true">
+              <div *ngFor="let line of gutterLines" class="gutter-num">{{ line }}</div>
+            </div>
+
+            <!-- Code Content Pane -->
+            <div class="editor-code-pane py-3 px-3 px-md-4 flex-grow-1 overflow-x-auto">
+              
+              <!-- Block Comment: Executive Summary -->
+              <div class="code-comment-block mb-3">
+                <div class="syn-comment">/**</div>
+                <div class="syn-comment ps-3">* <span class="syn-tag">&#64;company</span> {{ activeItem.company }}</div>
+                <div class="syn-comment ps-3">* <span class="syn-tag">&#64;role</span> {{ activeItem.role }}</div>
+                <div class="syn-comment ps-3">* <span class="syn-tag">&#64;period</span> {{ activeItem.period }} [{{ activeItem.isCurrent ? 'ACTIVE_PRODUCTION' : 'VERIFIED_RECORD' }}]</div>
+                <div class="syn-comment ps-3">* <span class="syn-tag">&#64;location</span> {{ activeItem.location }} ({{ activeItem.employmentType }})</div>
+                <div class="syn-comment ps-3">*</div>
+                <div class="syn-comment ps-3">* <span class="syn-tag">&#64;summary</span></div>
+                <div class="syn-comment ps-3">* {{ activeItem.summary }}</div>
+                <div class="syn-comment">*/</div>
+              </div>
+
+              <!-- Interface Contract Definition -->
+              <div class="code-line mb-3">
+                <span class="syn-keyword">import</span> &#123; <span class="syn-type">EnterpriseDeliverable</span>, <span class="syn-type">PerformanceAudit</span> &#125; <span class="syn-keyword">from</span> <span class="syn-string">'&#64;angular/core'</span>;
+              </div>
+
+              <!-- Architectural Deliverables JSON Array -->
+              <div class="code-line">
+                <span class="syn-keyword">export const</span> <span class="syn-prop">architecturalDeliverables</span>: <span class="syn-type">EnterpriseDeliverable</span>[] = [
+              </div>
+
+              <!-- Deliverable Items as JSON Objects -->
+              <div *ngFor="let deliv of activeDeliverables; let last = last" class="code-deliverable-item ps-3 ps-md-4 my-2">
+                <div class="syn-brace">&#123;</div>
+                <div class="ps-3">
+                  <span class="syn-prop">task</span>: <span class="syn-string">"{{ deliv.task }}"</span>,
+                </div>
+                <div class="ps-3">
+                  <span class="syn-prop">impact</span>: <span class="syn-string">"{{ deliv.impact }}"</span>,
+                </div>
+                <div class="ps-3">
+                  <span class="syn-prop">verified</span>: <span class="syn-boolean">true</span>
+                </div>
+                <div class="syn-brace">&#125;{{ last ? '' : ',' }}</div>
+              </div>
+
+              <div class="code-line mb-4">
+                <span class="syn-brace">];</span>
+              </div>
+
+              <!-- ======================================================== -->
+              <!-- Performance Debugger Console Panel (Verified Metrics)    -->
+              <!-- ======================================================== -->
+              <div class="debugger-console-panel p-3 my-3 rounded">
+                <div class="debugger-header d-flex align-items-center justify-content-between mb-2 pb-2 border-bottom border-secondary border-opacity-25">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="terminal-prompt">$</span>
+                    <span class="debugger-title text-accent-cyan">// PERFORMANCE_DEBUGGER_CONSOLE --benchmarks</span>
+                  </div>
+                  <span class="debugger-status text-success small">● 3/3 TESTS PASSED (0 ERRORS)</span>
+                </div>
+
+                <div class="debugger-metrics-grid d-flex flex-column gap-2">
+                  <div *ngFor="let metric of activeMetrics" class="debugger-metric-row d-flex flex-wrap align-items-center justify-content-between py-1 px-2 rounded">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="metric-pass-dot">●</span>
+                      <span class="syn-keyword">[PASS]</span>
+                      <span class="metric-key syn-prop">{{ metric.label }}:</span>
+                      <span class="metric-desc text-secondary">{{ metric.description }}</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="metric-val syn-number fw-bold">{{ metric.value }}</span>
+                      <span class="metric-latency small text-muted-custom">({{ metric.latency }})</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Production Stack Code Array -->
+              <div class="code-line mt-3">
+                <span class="syn-keyword">export const</span> <span class="syn-prop">productionStack</span>: <span class="syn-type">string</span>[] = [
+              </div>
+              <div class="code-line ps-3 ps-md-4 d-flex flex-wrap gap-2 my-2">
+                <span *ngFor="let tech of activeItem.technologies; let last = last" class="tech-code-pill">
+                  <span class="syn-string">"{{ tech }}"</span>{{ last ? '' : ',' }}
+                </span>
+              </div>
+              <div class="code-line">
+                <span class="syn-brace">];</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- Bottom IDE Terminal / Command Line Footer  -->
+      <!-- ========================================== -->
+      <div class="ide-terminal-bar px-3 py-2 pf-mono">
+        <div class="terminal-nav d-flex align-items-center justify-content-between mb-2">
+          <div class="d-flex align-items-center gap-3">
+            <span class="term-tab active"><i class="bi bi-terminal me-1"></i>TERMINAL</span>
+            <span class="term-tab d-none d-sm-inline-block">OUTPUT</span>
+            <span class="term-tab d-none d-sm-inline-block">DEBUG CONSOLE</span>
+            <span class="term-tab text-muted-custom">PROBLEMS (0)</span>
+          </div>
+          <div class="terminal-ctrls d-flex gap-2 text-muted-custom small">
+            <i class="bi bi-plus-lg" title="New Terminal"></i>
+            <i class="bi bi-trash" title="Clear"></i>
+            <i class="bi bi-chevron-up" title="Expand"></i>
+          </div>
+        </div>
+
+        <div class="terminal-command-line d-flex flex-wrap align-items-center gap-2">
+          <span class="terminal-host text-primary">arun@enterprise-ide:~/career$</span>
+          <span class="terminal-cmd syn-string">SELECT role, impact, throughput FROM {{ activeItem.id }}_operations WHERE verified = 1;</span>
+          <span class="terminal-cursor">_</span>
+        </div>
+        <div class="terminal-response text-muted-custom small mt-1">
+          =&gt; <span class="text-success">6 rows selected</span> in production ledger (Execution: 0.12ms) · 0 vulnerabilities detected.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

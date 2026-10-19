@@ -1,0 +1,459 @@
+// Dracula & Midnight IDE Palette
+$dracula-bg: #282a36;
+$dracula-darker: #1e1f29;
+$dracula-darkest: #191a21;
+$dracula-current-line: #343746;
+$dracula-foreground: #f8f8f2;
+$dracula-comment: #6272a4;
+$dracula-cyan: #8be9fd;
+$dracula-green: #50fa7b;
+$dracula-orange: #ffb86c;
+$dracula-pink: #ff79c6;
+$dracula-purple: #bd93f9;
+$dracula-red: #ff5555;
+$dracula-yellow: #f1fa8c;
+
+.portfolio-experience-section {
+  position: relative;
+  overflow: hidden;
+}
+
+// ==========================================
+// Floating Background Code Elements
+// ==========================================
+.floating-code-accent {
+  position: absolute;
+  color: var(--pf-accent);
+  opacity: 0.07;
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+
+  &.code-accent-1 {
+    top: 8%;
+    left: 4%;
+    font-size: 3.5rem;
+    animation: floatCode1 7s ease-in-out infinite alternate;
+  }
+  &.code-accent-2 {
+    top: 35%;
+    right: 5%;
+    font-size: 2.8rem;
+    animation: floatCode2 6s ease-in-out infinite alternate;
+  }
+  &.code-accent-3 {
+    bottom: 12%;
+    left: 8%;
+    font-size: 4rem;
+    animation: floatCode1 8s ease-in-out infinite alternate;
+  }
+  &.code-accent-4 {
+    top: 65%;
+    right: 8%;
+    font-size: 2.5rem;
+    animation: floatCode2 7.5s ease-in-out infinite alternate;
+  }
+  &.code-accent-5 {
+    bottom: 25%;
+    left: 2%;
+    font-size: 2.2rem;
+    animation: floatCode1 6.5s ease-in-out infinite alternate;
+  }
+}
+
+// ==========================================
+// The IDE Window Frame (VS Code Container)
+// ==========================================
+.ide-window-frame {
+  border-radius: 18px;
+  background-color: $dracula-bg;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 65px -15px rgba(0, 0, 0, 0.75), 0 0 35px rgba(98, 114, 164, 0.15);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+// Window Top Bar
+.ide-top-bar {
+  height: 44px;
+  background-color: $dracula-darkest;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  .ide-traffic-dots {
+    .traffic-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+
+      &.dot-red { background-color: $dracula-red; }
+      &.dot-yellow { background-color: $dracula-yellow; }
+      &.dot-green { background-color: $dracula-green; }
+    }
+  }
+
+  .ide-breadcrumb {
+    font-size: 0.75rem;
+    color: $dracula-comment;
+  }
+
+  .ide-tabs-row {
+    height: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    .ide-tab-btn {
+      height: 44px;
+      padding: 0 16px;
+      background-color: transparent;
+      border: none;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      color: $dracula-comment;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+
+      .tab-icon-ts {
+        color: #3178c6;
+        font-weight: 700;
+        font-size: 0.72rem;
+      }
+
+      .tab-badge-live {
+        font-size: 0.6rem;
+        padding: 1px 5px;
+        border-radius: 4px;
+        background: rgba(80, 250, 123, 0.15);
+        color: $dracula-green;
+        font-weight: 700;
+      }
+
+      .tab-close-icon {
+        font-size: 0.9rem;
+        opacity: 0.6;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.03);
+        color: $dracula-foreground;
+      }
+
+      &.active {
+        background-color: $dracula-bg;
+        color: $dracula-foreground;
+        border-top: 2px solid $dracula-cyan;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .ide-env-badges {
+    font-size: 0.72rem;
+  }
+}
+
+// IDE Body Layout (Sidebar + Editor)
+.ide-body-layout {
+  min-height: 580px;
+}
+
+// ==========================================
+// Sidebar: File Explorer Tree
+// ==========================================
+.ide-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background-color: $dracula-darker;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 991px) {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .sidebar-section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: $dracula-comment;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .tree-root-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+  }
+
+  .tree-folder-label {
+    font-size: 0.76rem;
+  }
+
+  .sidebar-file-btn {
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    color: $dracula-comment;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+
+    .tree-ts-icon {
+      color: #3178c6;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    .status-dot-active {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: $dracula-green;
+      box-shadow: 0 0 8px $dracula-green;
+      animation: dotPulse 2s infinite;
+    }
+
+    .status-dot-done {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $dracula-cyan;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.04);
+      color: $dracula-foreground;
+    }
+
+    &.active {
+      background-color: $dracula-current-line;
+      color: $dracula-cyan;
+      font-weight: 600;
+      border-left: 3px solid $dracula-cyan;
+      border-radius: 0 6px 6px 0;
+    }
+  }
+
+  .sidebar-file-static {
+    font-size: 0.76rem;
+    opacity: 0.7;
+  }
+
+  .sidebar-meta-panel {
+    background-color: rgba(0, 0, 0, 0.15);
+
+    .meta-panel-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+    }
+    .meta-role-label {
+      font-size: 0.82rem;
+      color: $dracula-cyan !important;
+    }
+    .meta-company-label {
+      font-size: 0.75rem;
+      color: $dracula-foreground !important;
+    }
+    .meta-period-label {
+      font-size: 0.72rem;
+    }
+  }
+}
+
+// ==========================================
+// Code Editor Pane & Gutter
+// ==========================================
+.ide-editor-container {
+  background-color: $dracula-bg;
+  overflow: hidden;
+}
+
+.ide-editor-content {
+  color: $dracula-foreground;
+  font-size: 0.84rem;
+  line-height: 1.6;
+
+  .editor-gutter {
+    width: 44px;
+    flex-shrink: 0;
+    color: $dracula-comment;
+    font-size: 0.76rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.1);
+
+    .gutter-num {
+      line-height: 1.6;
+    }
+  }
+
+  .editor-code-pane {
+    max-width: 100%;
+  }
+}
+
+// Syntax Highlighting Classes (Dracula)
+.syn-keyword { color: $dracula-pink; font-weight: 600; }
+.syn-comment { color: $dracula-comment; font-style: italic; }
+.syn-tag { color: $dracula-cyan; font-style: normal; font-weight: 600; }
+.syn-prop { color: $dracula-cyan; }
+.syn-string { color: $dracula-green; }
+.syn-number { color: $dracula-purple; font-weight: 700; }
+.syn-boolean { color: $dracula-orange; font-weight: 600; }
+.syn-type { color: $dracula-yellow; }
+.syn-brace { color: $dracula-foreground; }
+
+.code-deliverable-item {
+  border-left: 2px solid rgba(139, 233, 253, 0.2);
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-left-color: $dracula-cyan;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+}
+
+// ==========================================
+// Performance Debugger Console Panel
+// ==========================================
+.debugger-console-panel {
+  background-color: $dracula-darkest;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  .debugger-title {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: $dracula-cyan;
+  }
+
+  .debugger-status {
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .debugger-metric-row {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.78rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(80, 250, 123, 0.3);
+    }
+
+    .metric-pass-dot {
+      color: $dracula-green;
+      font-size: 0.7rem;
+    }
+
+    .metric-key {
+      font-weight: 600;
+    }
+
+    .metric-desc {
+      font-size: 0.75rem;
+    }
+
+    .metric-val {
+      font-size: 0.88rem;
+      color: $dracula-yellow;
+    }
+
+    .metric-latency {
+      font-size: 0.68rem;
+      color: $dracula-comment;
+    }
+  }
+}
+
+// Technology Code Pills
+.tech-code-pill {
+  font-size: 0.78rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $dracula-cyan;
+    background-color: rgba(139, 233, 253, 0.08);
+  }
+}
+
+// ==========================================
+// Bottom IDE Terminal Bar
+// ==========================================
+.ide-terminal-bar {
+  background-color: $dracula-darkest;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  .terminal-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 6px;
+
+    .term-tab {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: $dracula-comment;
+      cursor: pointer;
+
+      &.active {
+        color: $dracula-foreground;
+        border-bottom: 2px solid $dracula-cyan;
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+  .terminal-command-line {
+    font-size: 0.78rem;
+
+    .terminal-host {
+      color: $dracula-cyan !important;
+      font-weight: 700;
+    }
+
+    .terminal-cursor {
+      color: $dracula-cyan;
+      font-weight: 700;
+      animation: cursorBlink 1s infinite;
+    }
+  }
+
+  .terminal-response {
+    font-size: 0.72rem;
+    color: $dracula-comment;
+  }
+}
+
+// ==========================================
+// Animations
+// ==========================================
+@keyframes floatCode1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-18px) rotate(6deg); }
+}
+
+@keyframes floatCode2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(16px) rotate(-6deg); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}

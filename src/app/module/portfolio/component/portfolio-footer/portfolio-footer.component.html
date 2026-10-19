@@ -1,0 +1,74 @@
+<footer class="portfolio-footer-wrapper pt-5 pb-4 border-top border-secondary border-opacity-25">
+  <div class="container-xl">
+    
+    <div class="row g-4 align-items-center justify-content-between mb-4">
+      
+      <!-- Brand & Title -->
+      <div class="col-md-5">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="brand-monogram">AK</span>
+          <span class="brand-name fs-5">Arun Kumar R</span>
+        </div>
+        <p class="text-secondary small mb-0">
+          Frontend Developer · Angular, TypeScript, RxJS & Flutter. Building enterprise operations and high-performance digital experiences.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4">
+        <ul class="footer-nav-list list-unstyled d-flex flex-wrap gap-3 mb-0 justify-content-md-center">
+          <li *ngFor="let item of navItems">
+            <a
+              [href]="'#' + item.fragment"
+              (click)="scrollToSection(item.fragment, $event)"
+              class="footer-nav-link text-decoration-none"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Back to Top CTA -->
+      <div class="col-md-3 text-md-end">
+        <button
+          type="button"
+          class="back-to-top-btn d-inline-flex align-items-center gap-2"
+          (click)="scrollToTop($event)"
+          aria-label="Back to top"
+        >
+          <span>Back to Top</span>
+          <i class="bi bi-arrow-up-circle-fill fs-5"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary border-opacity-25 my-4" />
+
+    <!-- Bottom Copyright & Social Row -->
+    <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 text-secondary small">
+      <div>
+        © {{ currentYear }} Arun Kumar R. All rights reserved.
+      </div>
+
+      <div class="footer-tech-tag">
+        <i class="bi bi-code-slash text-primary me-1"></i>
+        <span>Built with Angular 14 & GSAP</span>
+      </div>
+
+      <div class="d-flex align-items-center gap-3">
+        <a [href]="profile.githubUrl" target="_blank" rel="noopener" class="footer-social-link" aria-label="GitHub">
+          <i class="bi bi-github fs-5"></i>
+        </a>
+        <a [href]="profile.linkedinUrl" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
+          <i class="bi bi-linkedin fs-5"></i>
+        </a>
+        <a [href]="'mailto:' + profile.email" class="footer-social-link" aria-label="Email">
+          <i class="bi bi-envelope-fill fs-5"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>

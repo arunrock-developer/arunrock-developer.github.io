@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'ngx-toastr/toastr';
+@import './app/module/portfolio/portfolio-theme.scss';
 
 html {
     scroll-behavior: smooth;
@@ -139,8 +140,10 @@ html {
 
 }
 
-.text-secondary{
-    color: var(--secondary-color);
+// Scoped to old template pages only — must NOT override portfolio module
+.darkTheme .text-secondary,
+.lightTheme .text-secondary {
+    color: var(--secondary-color) !important;
 }
 
 .text-gray{

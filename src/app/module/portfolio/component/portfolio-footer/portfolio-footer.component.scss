@@ -1,0 +1,69 @@
+.portfolio-footer-wrapper {
+  background-color: var(--pf-bg-primary);
+  position: relative;
+  z-index: 5;
+}
+
+.brand-monogram {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--pf-accent), var(--pf-accent-violet));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--pf-font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.brand-name {
+  font-family: var(--pf-font-display);
+  font-weight: 700;
+  color: var(--pf-text-primary);
+}
+
+.footer-nav-link {
+  font-size: 0.88rem;
+  color: var(--pf-text-secondary);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--pf-accent);
+  }
+}
+
+.back-to-top-btn {
+  background: transparent;
+  border: 1px solid var(--pf-border-subtle);
+  color: var(--pf-text-secondary);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-family: var(--pf-font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: var(--pf-accent);
+    color: var(--pf-accent);
+    transform: translateY(-2px);
+  }
+}
+
+.footer-social-link {
+  color: var(--pf-text-muted);
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--pf-accent);
+    transform: translateY(-2px);
+  }
+}
+
+.footer-tech-tag {
+  font-family: var(--pf-font-display);
+  font-size: 0.8rem;
+}

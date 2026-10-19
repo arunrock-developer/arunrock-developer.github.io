@@ -1,0 +1,109 @@
+<header class="portfolio-nav-wrapper" [class.scrolled]="isScrolled" [class.theme-light]="currentTheme === 'light'">
+  <div class="container-xl">
+    <div class="nav-inner d-flex align-items-center justify-content-between">
+      <!-- Brand Logo / Wordmark -->
+      <a href="#hero" (click)="scrollToSection('hero', $event)"
+        class="brand-link d-flex align-items-center gap-2 text-decoration-none" aria-label="Arun Kumar Portfolio Home">
+        <span class="brand-monogram">AK</span>
+        <div class="brand-text d-flex flex-column">
+          <span class="brand-name">Arun Kumar</span>
+          <span class="brand-role">Frontend Engineer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu with Smooth Sliding Indicator Pill -->
+      <nav class="desktop-nav d-none d-lg-flex align-items-center" aria-label="Main Navigation">
+        <div class="nav-pill-track position-relative" #navTrack>
+          <!-- Sliding Indicator Pill -->
+          <div class="nav-sliding-pill"
+               [ngStyle]="pillStyle"
+               [class.visible]="pillVisible"
+               aria-hidden="true"></div>
+
+          <ul class="nav-links-list d-flex align-items-center mb-0 list-unstyled gap-1">
+            <li *ngFor="let item of navItems" class="nav-item">
+              <a [id]="'nav-link-' + item.fragment"
+                 [href]="'#' + item.fragment"
+                 (click)="scrollToSection(item.fragment, $event)"
+                 class="nav-anchor"
+                 [class.active]="activeSection === item.fragment">
+                <span class="nav-label">{{ item.label }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Right Actions: Theme Toggle & Resume CTA -->
+      <div class="nav-actions d-flex align-items-center gap-3">
+        <!-- Theme Mode Toggle -->
+        <button type="button" class="theme-toggle-btn" (click)="toggleTheme()"
+          [attr.aria-label]="currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+          title="Toggle Color Theme">
+          <i class="bi" [class.bi-moon-stars-fill]="currentTheme === 'dark'"
+            [class.bi-sun-fill]="currentTheme === 'light'"></i>
+        </button>
+
+        <!-- Resume Download CTA -->
+        <a href="assets/ArunKumar-R-Angular-Frontend-Developer.pdf"
+          download="ArunKumar-R-Angular-Frontend-Developer.pdf"
+          class="pf-btn-secondary d-none d-sm-inline-flex resume-cta" target="_blank" rel="noopener"
+          aria-label="Download Arun Kumar Resume PDF">
+          <i class="bi bi-file-earmark-pdf"></i>
+          <span>Resume</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-btn d-lg-none" (click)="toggleMobileMenu()"
+          [attr.aria-expanded]="mobileMenuOpen" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-bar" [class.open]="mobileMenuOpen"></span>
+          <span class="hamburger-bar" [class.open]="mobileMenuOpen"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas / Overlay Menu -->
+  <div class="mobile-drawer-overlay" [class.visible]="mobileMenuOpen" (click)="closeMobileMenu()"></div>
+  <div class="mobile-drawer" [class.open]="mobileMenuOpen" role="dialog" aria-modal="true"
+    aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header d-flex align-items-center justify-content-between p-4">
+      <div class="d-flex align-items-center gap-2">
+        <span class="brand-monogram">AK</span>
+        <span class="brand-name">Arun Kumar</span>
+      </div>
+      <button type="button" class="drawer-close-btn" (click)="closeMobileMenu()" aria-label="Close menu">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <div class="mobile-drawer-body p-4">
+      <ul class="mobile-nav-list list-unstyled d-flex flex-column gap-3 mb-4">
+        <li *ngFor="let item of navItems">
+          <a [href]="'#' + item.fragment" (click)="scrollToSection(item.fragment, $event)" class="mobile-nav-link"
+            [class.active]="activeSection === item.fragment">
+            <span class="mobile-nav-num">{{ item.number }}</span>
+            <span class="mobile-nav-text">{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="mobile-drawer-footer pt-4 border-top border-secondary border-opacity-25 d-flex flex-column gap-3">
+        <a href="assets/ArunKumar-R-Angular-Frontend-Developer.pdf"
+          download="ArunKumar-R-Angular-Frontend-Developer.pdf"
+          class="pf-btn-primary w-100 justify-content-center text-center">
+          <i class="bi bi-file-earmark-pdf"></i>
+          <span>Download Resume</span>
+        </a>
+
+        <div class="d-flex align-items-center justify-content-between pt-2">
+          <span class="text-secondary small">Color Theme</span>
+          <button type="button" class="theme-toggle-btn" (click)="toggleTheme()">
+            <i class="bi" [class.bi-moon-stars-fill]="currentTheme === 'dark'"
+              [class.bi-sun-fill]="currentTheme === 'light'"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

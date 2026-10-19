@@ -1,0 +1,167 @@
+<div
+  *ngIf="isOpen && project"
+  class="modal-backdrop-custom d-flex align-items-center justify-content-center"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-labelledby]="'modal-title-' + project.id"
+>
+  <div class="modal-dialog-custom pf-card p-0" (click)="$event.stopPropagation()">
+    
+    <!-- Modal Header -->
+    <div class="modal-header-custom p-4 d-flex align-items-center justify-content-between border-bottom border-secondary border-opacity-25">
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <span class="pf-badge">{{ project.category }}</span>
+        <span class="pf-badge-outline text-uppercase">{{ project.contentType.replace('-', ' ') }}</span>
+        <span *ngIf="project.isProprietary" class="badge bg-secondary bg-opacity-25 text-muted-custom border border-secondary border-opacity-25">
+          <i class="bi bi-lock-fill me-1"></i>Enterprise Confidential
+        </span>
+      </div>
+
+      <button
+        type="button"
+        class="modal-close-icon-btn"
+        (click)="closeModal()"
+        aria-label="Close project details"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <!-- Modal Scrollable Body -->
+    <div class="modal-body-custom p-4 p-md-5">
+      
+      <!-- Title & Subtitle -->
+      <div class="project-header-block mb-4">
+        <h2 [id]="'modal-title-' + project.id" class="project-modal-title pf-display mb-2">
+          {{ project.title }}
+        </h2>
+        <p class="project-modal-subtitle text-secondary lead mb-3">
+          {{ project.subtitle }}
+        </p>
+        <p class="project-modal-summary text-primary-emphasis mb-0">
+          {{ project.summary }}
+        </p>
+      </div>
+
+      <!-- Proprietary Disclaimer Notice -->
+      <div *ngIf="project.disclaimer" class="proprietary-alert mb-4 p-3 rounded-3 d-flex align-items-start gap-2">
+        <i class="bi bi-info-circle-fill text-info mt-1 flex-shrink-0"></i>
+        <div class="small text-secondary">{{ project.disclaimer }}</div>
+      </div>
+
+      <!-- Problem & Solution Grid -->
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <div class="problem-card p-4 rounded-3 h-100">
+            <div class="section-micro-tag text-warning mb-2">
+              <i class="bi bi-exclamation-triangle-fill me-1"></i> THE CHALLENGE / PROBLEM
+            </div>
+            <p class="mb-0 text-secondary small">{{ project.problem }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="solution-card p-4 rounded-3 h-100">
+            <div class="section-micro-tag text-success mb-2">
+              <i class="bi bi-check-circle-fill me-1"></i> THE ARCHITECTURAL SOLUTION
+            </div>
+            <p class="mb-0 text-secondary small">{{ project.solution }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role & Key Contributions -->
+      <div class="role-block mb-4 p-4 rounded-3 bg-surface-custom border border-secondary border-opacity-25">
+        <h4 class="block-title pf-display mb-2">
+          <i class="bi bi-person-workspace text-primary me-2"></i>My Engineering Role
+        </h4>
+        <p class="text-secondary mb-3">{{ project.myRole }}</p>
+
+        <h5 class="sub-block-title small text-uppercase text-muted-custom mb-2">Key Contributions:</h5>
+        <ul class="contributions-list list-unstyled d-flex flex-column gap-2 mb-0">
+          <li *ngFor="let point of project.contributions" class="d-flex align-items-start gap-2 small">
+            <i class="bi bi-arrow-right-short text-primary fs-5 lh-1 flex-shrink-0"></i>
+            <span class="text-secondary">{{ point }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Architectural Workflow Pipeline (if available) -->
+      <div *ngIf="project.workflowSteps && project.workflowSteps.length > 0" class="workflow-block mb-4">
+        <h4 class="block-title pf-display mb-3">
+          <i class="bi bi-diagram-3-fill text-info me-2"></i>Execution Workflow Pipeline
+        </h4>
+        <div class="workflow-grid d-flex flex-column flex-md-row gap-3">
+          <div *ngFor="let step of project.workflowSteps" class="workflow-step-card p-3 rounded-3 flex-fill">
+            <span class="step-num">{{ step.step }}</span>
+            <div class="step-title mt-1 mb-1">{{ step.title }}</div>
+            <div class="step-desc small text-muted-custom">{{ step.description }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Checklist -->
+      <div class="features-block mb-4">
+        <h4 class="block-title pf-display mb-3">
+          <i class="bi bi-stars text-warning me-2"></i>Core Capabilities & Features
+        </h4>
+        <div class="row g-2">
+          <div *ngFor="let feat of project.features" class="col-md-6">
+            <div class="feature-item-pill d-flex align-items-center gap-2 p-2 px-3 rounded-3">
+              <i class="bi bi-check2 text-primary flex-shrink-0"></i>
+              <span class="small text-secondary">{{ feat }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Engineering Challenges & Decisions -->
+      <div *ngIf="project.challenges && project.challenges.length > 0" class="challenges-block mb-4">
+        <h4 class="block-title pf-display mb-2">
+          <i class="bi bi-tools text-secondary me-2"></i>Engineering Challenges & Trade-offs
+        </h4>
+        <ul class="challenges-list list-unstyled d-flex flex-column gap-2 mb-0">
+          <li *ngFor="let ch of project.challenges" class="d-flex align-items-start gap-2 small">
+            <i class="bi bi-shield-exclamation text-warning mt-1 flex-shrink-0"></i>
+            <span class="text-secondary">{{ ch }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Technology Stack Badges -->
+      <div class="tech-stack-block pt-3 border-top border-secondary border-opacity-25">
+        <h5 class="small text-uppercase text-muted-custom mb-2">Complete Technology Stack:</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <span *ngFor="let tech of project.technologies" class="pf-badge-outline">
+            {{ tech }}
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal Footer Actions -->
+    <div class="modal-footer-custom p-4 d-flex align-items-center justify-content-between border-top border-secondary border-opacity-25">
+      <div class="d-flex align-items-center gap-2">
+        <span *ngIf="project.isProprietary" class="text-muted-custom small">
+          <i class="bi bi-shield-lock me-1"></i>Internal proprietary code cannot be publicly hosted
+        </span>
+        <a
+          *ngIf="project.repoUrl"
+          [href]="project.repoUrl"
+          target="_blank"
+          rel="noopener"
+          class="pf-btn-secondary"
+        >
+          <i class="bi bi-github"></i>
+          <span>View Source</span>
+        </a>
+      </div>
+
+      <button type="button" class="pf-btn-primary" (click)="closeModal()">
+        <span>Close Case Study</span>
+      </button>
+    </div>
+
+  </div>
+</div>

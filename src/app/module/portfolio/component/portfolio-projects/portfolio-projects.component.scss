@@ -1,0 +1,201 @@
+.portfolio-projects-section {
+  position: relative;
+}
+
+// Search Input
+.search-input-wrap {
+  width: 100%;
+  max-width: 320px;
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: var(--pf-text-muted);
+    font-size: 0.9rem;
+    pointer-events: none;
+  }
+
+  .project-search-input {
+    padding: 10px 36px 10px 38px;
+    border-radius: 9999px;
+    background-color: var(--pf-bg-card);
+    border: 1px solid var(--pf-border-subtle);
+    color: var(--pf-text-primary);
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+      color: var(--pf-text-muted);
+    }
+
+    &:focus {
+      border-color: var(--pf-accent);
+      background-color: var(--pf-bg-surface);
+      box-shadow: 0 0 15px var(--pf-glow);
+    }
+  }
+
+  .btn-clear-search {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--pf-text-muted);
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      color: var(--pf-accent);
+    }
+  }
+}
+
+// Category Tabs
+.project-tab-btn {
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background-color: var(--pf-bg-card);
+  border: 1px solid var(--pf-border-subtle);
+  color: var(--pf-text-secondary);
+  font-family: var(--pf-font-display);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--pf-accent);
+    color: var(--pf-text-primary);
+  }
+
+  &.active {
+    background-color: var(--pf-accent);
+    border-color: var(--pf-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 14px var(--pf-glow);
+  }
+}
+
+// Hero Featured Card
+.hero-featured-card {
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--pf-bg-card) 0%, var(--pf-bg-surface) 100%);
+  border: 1px solid var(--pf-border-medium);
+  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.5);
+
+  .hero-project-title {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 700;
+    color: var(--pf-text-primary);
+  }
+
+  .hero-highlights-box {
+    background-color: var(--pf-bg-primary);
+    border: 1px solid var(--pf-border-subtle);
+  }
+}
+
+// Terminal Mockup Frame
+.featured-visual-frame {
+  background: radial-gradient(circle at 80% 20%, var(--pf-bg-card) 0%, var(--pf-bg-primary) 100%);
+  border: 1px solid var(--pf-border-medium);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    border-color: var(--pf-accent);
+    transform: translateY(-3px);
+
+    .view-overlay-hint {
+      color: var(--pf-accent);
+    }
+  }
+
+  .erp-mock-terminal {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+    .t-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+
+      &.t-red { background-color: #ef4444; }
+      &.t-yellow { background-color: #f59e0b; }
+      &.t-green { background-color: #10b981; }
+    }
+
+    .t-title {
+      font-size: 0.72rem;
+      color: var(--pf-text-muted);
+    }
+
+    .terminal-code {
+      line-height: 1.6;
+      color: var(--pf-text-secondary);
+      overflow-x: auto;
+      max-width: 100%;
+      word-break: break-word;
+      font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+
+      .code-line {
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+
+      .c-keyword { color: var(--pf-accent); }
+    }
+
+    .t-stat-val {
+      font-family: var(--pf-font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .t-stat-lbl {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--pf-text-muted);
+    }
+  }
+
+  .view-overlay-hint {
+    margin-top: 14px;
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--pf-text-muted);
+    transition: color 0.2s ease;
+  }
+}
+
+// Project Grid Cards
+.project-card {
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .project-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--pf-text-primary);
+  }
+
+  &:hover {
+    border-color: var(--pf-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px var(--pf-glow);
+
+    .card-action-text {
+      color: var(--pf-accent-hover) !important;
+      text-decoration: underline;
+    }
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

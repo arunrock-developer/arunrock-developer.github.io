@@ -1,0 +1,200 @@
+<section id="projects" class="portfolio-projects-section py-6">
+  <div class="container-xl">
+    
+    <!-- Section Header & Filter Controls -->
+    <div class="projects-header mb-5">
+      <div class="pf-section-eyebrow">
+        <span class="eyebrow-num">05</span>
+        <span class="eyebrow-dot"></span>
+        <span>PORTFOLIO SHOWCASE</span>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-4">
+        <div>
+          <h2 class="pf-section-title mb-2">
+            Enterprise platforms, tools & prototypes.
+          </h2>
+          <p class="pf-section-subtitle mb-0">
+            A curated gallery representing real enterprise ERP architectures, cross-platform mobile apps, and full-stack API integration.
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-input-wrap position-relative">
+          <i class="bi bi-search search-icon"></i>
+          <input
+            type="text"
+            class="form-control project-search-input"
+            placeholder="Search by tech or keyword..."
+            [value]="searchQuery"
+            (input)="onSearchChange($event)"
+            aria-label="Search projects"
+          />
+          <button
+            *ngIf="searchQuery"
+            type="button"
+            class="btn-clear-search"
+            (click)="clearSearch()"
+            aria-label="Clear search"
+          >
+            <i class="bi bi-x-circle-fill"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="category-tabs-row d-flex flex-wrap gap-2 mt-4 pt-2">
+        <button
+          *ngFor="let cat of categories"
+          type="button"
+          class="project-tab-btn"
+          [class.active]="selectedCategory === cat"
+          (click)="filterByCategory(cat)"
+        >
+          {{ cat }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredProjects.length === 0" class="empty-state-card text-center py-5 my-4 pf-card">
+      <i class="bi bi-folder-x fs-1 text-muted-custom mb-3 d-inline-block"></i>
+      <h3 class="pf-display fs-4">No projects match your filter</h3>
+      <p class="text-secondary mb-3">Try adjusting your search query or selecting "All" categories.</p>
+      <button type="button" class="pf-btn-secondary" (click)="filterByCategory('All'); clearSearch()">
+        Reset Filters
+      </button>
+    </div>
+
+    <!-- Editorial Projects Gallery -->
+    <div *ngIf="filteredProjects.length > 0" class="projects-gallery">
+      
+      <!-- HERO FEATURED PROJECT (Enterprise ERP Operations Suite) -->
+      <div *ngIf="featuredProject && (selectedCategory === 'All' || selectedCategory === featuredProject.category)" class="hero-featured-card pf-card mb-5 p-4 p-lg-5">
+        <div class="row align-items-center g-4 g-lg-5">
+          
+          <div class="col-lg-7">
+            <div class="d-flex align-items-center gap-2 flex-wrap mb-3">
+              <span class="pf-badge">FEATURED CASE STUDY</span>
+              <span class="pf-badge-outline">{{ featuredProject.category }}</span>
+              <span class="badge bg-secondary bg-opacity-25 text-muted-custom border border-secondary border-opacity-25 text-uppercase">
+                {{ featuredProject.contentType.replace('-', ' ') }}
+              </span>
+            </div>
+
+            <h3 class="hero-project-title pf-display mb-2">{{ featuredProject.title }}</h3>
+            <h4 class="hero-project-subtitle text-secondary fs-5 mb-3">{{ featuredProject.subtitle }}</h4>
+            <p class="hero-project-summary text-secondary mb-4">{{ featuredProject.summary }}</p>
+
+            <!-- Key Highlights Box -->
+            <div class="hero-highlights-box p-3 rounded-3 mb-4">
+              <div class="d-flex align-items-center gap-2 text-primary fw-bold small mb-2">
+                <i class="bi bi-shield-check"></i>
+                <span>Core Architectural Impact:</span>
+              </div>
+              <ul class="list-unstyled d-flex flex-column gap-1 mb-0 small text-secondary">
+                <li *ngFor="let point of featuredProject.contributions.slice(0, 3)" class="d-flex align-items-start gap-2">
+                  <i class="bi bi-check2 text-primary flex-shrink-0 mt-1"></i>
+                  <span>{{ point }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="d-flex flex-wrap align-items-center gap-3">
+              <button
+                type="button"
+                class="pf-btn-primary"
+                (click)="openProject(featuredProject)"
+              >
+                <span>View Full Case Study</span>
+                <i class="bi bi-arrow-right"></i>
+              </button>
+
+              <div class="d-flex flex-wrap gap-1">
+                <span *ngFor="let t of featuredProject.technologies.slice(0, 4)" class="pf-badge-outline">
+                  {{ t }}
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-5">
+            <div class="featured-visual-frame rounded-4 p-4 position-relative cursor-pointer" (click)="openProject(featuredProject)">
+              <div class="erp-mock-terminal">
+                <div class="terminal-bar d-flex align-items-center gap-2 mb-3">
+                  <span class="t-dot t-red"></span>
+                  <span class="t-dot t-yellow"></span>
+                  <span class="t-dot t-green"></span>
+                  <span class="t-title ms-2">ERP_Core_Dashboard.component.ts</span>
+                </div>
+                <div class="terminal-code small">
+                  <div class="code-line"><span class="c-keyword">@NgModule</span>({{ '{' }}</div>
+                  <div class="code-line ps-3">imports: [BillingModule, InventoryModule, POSModule],</div>
+                  <div class="code-line ps-3">providers: [HTTP_INTERCEPTOR_PROVIDER, AuthGuard]</div>
+                  <div class="code-line">{{ '}' }})</div>
+                  <div class="code-line mt-2 text-info">// 35+ Live Business Modules</div>
+                  <div class="code-line text-success">// Initial page load optimized by ~35%</div>
+                </div>
+
+                <div class="terminal-stats-grid mt-4 pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between text-center">
+                  <div>
+                    <div class="t-stat-val text-primary">35+</div>
+                    <div class="t-stat-lbl">Modules</div>
+                  </div>
+                  <div>
+                    <div class="t-stat-val text-info">-35%</div>
+                    <div class="t-stat-lbl">Load Time</div>
+                  </div>
+                  <div>
+                    <div class="t-stat-val text-success">100%</div>
+                    <div class="t-stat-lbl">Type-Safe</div>
+                  </div>
+                </div>
+              </div>
+              <div class="view-overlay-hint">
+                <i class="bi bi-arrows-fullscreen me-1"></i> Click to inspect architecture
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SUPPORTING & GRID PROJECTS -->
+      <div class="row g-4">
+        <div *ngFor="let project of supportingProjects" class="col-lg-6 col-xl-4">
+          <div class="project-card pf-card h-100 d-flex flex-column p-4 cursor-pointer" (click)="openProject(project)">
+            
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="pf-badge">{{ project.category }}</span>
+              <span class="pf-badge-outline small">{{ project.contentType.replace('-', ' ') }}</span>
+            </div>
+
+            <h4 class="project-card-title pf-display mb-1">{{ project.title }}</h4>
+            <div class="project-card-subtitle text-secondary small mb-3">{{ project.subtitle }}</div>
+            <p class="project-card-summary text-secondary small flex-grow-1 mb-4">{{ project.summary }}</p>
+
+            <div class="project-tech-tags d-flex flex-wrap gap-1 mb-3">
+              <span *ngFor="let t of project.technologies.slice(0, 4)" class="pf-badge-outline small">
+                {{ t }}
+              </span>
+              <span *ngIf="project.technologies.length > 4" class="text-muted-custom small align-self-center ps-1">
+                +{{ project.technologies.length - 4 }}
+              </span>
+            </div>
+
+            <div class="project-card-footer pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+              <span class="card-action-text text-primary small fw-semibold">
+                Explore Case Study <i class="bi bi-arrow-right ms-1"></i>
+              </span>
+              <i *ngIf="project.isProprietary" class="bi bi-shield-lock text-muted-custom" title="Enterprise Confidential / Synthetic Demo"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
